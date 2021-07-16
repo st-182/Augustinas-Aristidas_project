@@ -7,6 +7,7 @@ const mongoose = require(`mongoose`);
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(express.json());
 
 // setting up mongoose
 mongoose
@@ -26,7 +27,7 @@ mongoose
     );
   });
 
-const Product = mongoose.model("Product", {
+const Product = mongoose.model('Product', {
   name: String,
   price: String,
   img: String,
