@@ -1,0 +1,67 @@
+body {
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  margin: 0 auto;
+  color: white;
+  padding: 10px;
+  background-color: black;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.heading {
+  margin: 0 auto;
+  border: 1px solid red;
+  display: flex;
+
+  align-items: center;
+}
+
+img {
+  height: 50px;
+  width: 100px;
+}
+
+.fa-grip-lines {
+  color: white;
+  font-size: 30px;
+  position: relative;
+  left: 1750px;
+}
+
+.fa-grip-lines:hover {
+  cursor: pointer;
+}
+
+.navb {
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.navb:not(:last-child) {
+  margin-right: 30px;
+}
+
+.navb:hover {
+  color: orangered;
+  cursor: pointer;
+}
+
+.navbb {
+  width: 200px;
+  display: none;
+  position: relative;
+  left: 1300px;
+}
