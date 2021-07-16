@@ -1,4 +1,4 @@
-import Grape from "../models/grapeModel.js";
+import Completed_Table from "../models/completedTableModel.js";
 
 const showGrapesAndWine = (req, res) => {
   // Wine.find().then((response) => {

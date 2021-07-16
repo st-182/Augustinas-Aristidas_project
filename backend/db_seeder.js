@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import Completed_Table from "./models/compledTableModel.js";
+import Completed_Table from "./models/completedTableModel.js";
 
 dotenv.config();
 

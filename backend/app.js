@@ -4,7 +4,7 @@ import colors from "colors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import Completed_Table from "./models/compledTableModel.js";
+import Completed_Table from "./models/completedTableModel.js";
 
 const app = express();
 dotenv.config();
