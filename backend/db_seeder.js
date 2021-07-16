@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import Completed_Table from "./models/completedTableModel.js";
+import Order_a_Table from "./models/orderModel.js";
 
 dotenv.config();
 
@@ -78,6 +79,19 @@ let completedTable = [
   },
 ];
 
+let orders = [
+  {
+    name: `Petras`,
+    surname: `Slekys`,
+    email: `petrasslekys@gmail.com`,
+    phone_number: `+44 7478 258 038`,
+    table_order_description: `Aš norėčiau stalo, tokio, kad gelėčiau tobulinti CAO platforma kiekvieną dieną, bet ir norėčiau, kad BMW tematika būtų integruota į stalo dizainą.`,
+    table_order_sizes: `length: 200cm, width:100cm, height: 75cm`,
+    table_order_color: `black`,
+    table_order_materials: `oak, metal`,
+  },
+];
+
 // //Connecting mongoDB
 // mongoose
 //   .connect(process.env.MONGODB_URI, {
@@ -86,6 +100,6 @@ let completedTable = [
 //   })
 //   .then((result) => {
 //     console.log(`Connected to MongoDB from seeder`);
-//     Completed_Table.insertMany(completedTable);
+//     Order_a_Table.insertMany(orders);
 //   })
 //   .catch((err) => console.log(err));

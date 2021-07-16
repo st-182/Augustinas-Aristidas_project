@@ -4,10 +4,11 @@ import colors from "colors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import Completed_Table from "./models/completedTableModel.js";
 import {
   getCompletedTables,
   getCompletedTablesById,
+  putNewOrder,
+  showAllOrders,
 } from "./controllers/pages.controller.js";
 
 const app = express();
@@ -33,8 +34,9 @@ mongoose
     );
   });
 
-app.get(`/`, getCompletedTables);
-app.get(`/completed/:id`, getCompletedTablesById);
-// app.put(`/`, getCompletedTables);
+app.get(`/api/portfolio`, getCompletedTables);
+app.get(`/api/portfolio/:id`, getCompletedTablesById);
+// app.post(`/api/orders)`, putNewOrder);
+app.get(`/api/orders`, showAllOrders);
 // app.push(`/`, getCompletedTables);
 // app.delete(`/`, getCompletedTables);

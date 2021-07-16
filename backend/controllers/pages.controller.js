@@ -1,4 +1,5 @@
 import Completed_Table from "../models/completedTableModel.js";
+import Order_a_Table from "../models/orderModel.js";
 
 const getCompletedTables = (req, res) => {
   Completed_Table.find()
@@ -17,4 +18,26 @@ const getCompletedTablesById = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-export { getCompletedTables, getCompletedTablesById };
+const putNewOrder = (req, res) => {
+  let order = req.body
+  Order_a_Table.insertOne(order)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => console.log(err));
+};
+
+const showAllOrders = (req, res) => {
+  let id = req.params.id;
+  Order_a_Table.find()
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => console.log(err));
+};
+export {
+  getCompletedTables,
+  getCompletedTablesById,
+  putNewOrder,
+  showAllOrders,
+};
