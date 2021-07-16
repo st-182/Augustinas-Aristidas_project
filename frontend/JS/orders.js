@@ -90,7 +90,7 @@ const plasticTypes = [
 ];
 
 // Functions
-
+//! ========!!!THIS IS RENDERING!!!=============
 const renderOptions = (e) => {
   renderSizeOptions(sizeLength, lengthOptionElement, 8);
   renderSizeOptions(sizeWidth, widthOptionElement, 7);
@@ -111,15 +111,6 @@ const renderOptions = (e) => {
       break;
   }
   renderMaterialList();
-};
-
-const sendOrderToBackend = (e) => {
-  e.preventDefault();
-  console.group(`Data`);
-  for (let i = 0; i < e.target.length - 1; i++) {
-    e.target[i].value ? console.log(e.target[i].value) : null;
-  }
-  console.groupEnd(`Data`);
 };
 
 const renderCustom = () => {
@@ -185,6 +176,21 @@ const renderMaterialList = () => {
       renderSizeOptions(plasticTypes, materialListOptionElement, 0);
       break;
   }
+};
+//! ========!!!RENDERING ENDED!!!=============
+//! ========!!!THIS IS CREATION OF OBJECT!!!=============
+
+const sendOrderToBackend = (e) => {
+  e.preventDefault();
+  console.group(`Data`);
+  for (let i = 0; i < e.target.length - 1; i++) {
+    e.target[i].value ? console.log(e.target[i].value) : null;
+  }
+  console.groupEnd(`Data`);
+  for (let i = 0; i < e.target.length - 1; i++) {
+     e.target[i].value
+  }
+
 };
 
 // Events

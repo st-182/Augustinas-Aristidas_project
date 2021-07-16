@@ -1,8 +1,8 @@
 // API
-const ENDPOINT_API = 'http://localhost:5000/';
+const ENDPOINT_API = "http://localhost:5000/api/portfolio/";
 
 // DOM variables
-const dataOutput = document.querySelector('#output');
+const dataOutput = document.querySelector("#output");
 
 // functions
 // gallery ---------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ function getDeskInformation() {
     .then((data) => {
       let desks = data.reverse();
 
-      let output = '';
+      let output = "";
 
       for (let desk of desks) {
         output += `
@@ -36,5 +36,5 @@ function getDeskInformation() {
     .catch((err) => console.log(err));
 }
 
-document.addEventListener('DOMContentLoaded', getDeskInformation);
+document.addEventListener("DOMContentLoaded", getDeskInformation);
 // ------------------------------------------------------------------------------------------------------
