@@ -14,5 +14,5 @@ const completedTableSchema = new Schema(
   }
 );
 
-const Completed_Table = mongoose.model(`Completed_Table`, completedTableSchema);
+const Completed_Table = mongoose.model(`completed_table`, completedTableSchema);
 export default Completed_Table;

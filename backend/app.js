@@ -4,7 +4,12 @@ import colors from "colors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import Completed_Table from "./models/compledTableModel.js";
+import {
+  getCompletedTables,
+  getCompletedTablesById,
+  putNewOrder,
+  showAllOrders,
+} from "./controllers/pages.controller.js";
 
 const app = express();
 dotenv.config();
@@ -29,10 +34,9 @@ mongoose
     );
   });
 
-app.use(`/`, (req, res) => {
-  Completed_Table.find()
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((err) => console.log(err));
-});
+app.get(`/api/portfolio`, getCompletedTables);
+app.get(`/api/portfolio/:id`, getCompletedTablesById);
+// app.post(`/api/orders)`, putNewOrder);
+app.get(`/api/orders`, showAllOrders);
+// app.push(`/`, getCompletedTables);
+// app.delete(`/`, getCompletedTables);
