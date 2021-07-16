@@ -1,8 +1,10 @@
-const cors = require(`cors`);
-const express = require(`express`);
-const colors = require(`colors`);
-const dotenv = require(`dotenv`);
-const mongoose = require(`mongoose`);
+import cors from "cors";
+import express from "express";
+import colors from "colors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+
+import Completed_Table from "./models/compledTableModel.js";
 
 const app = express();
 dotenv.config();
@@ -27,14 +29,8 @@ mongoose
     );
   });
 
-const Product = mongoose.model('Product', {
-  name: String,
-  price: String,
-  img: String,
-});
-
 app.use(`/`, (req, res) => {
-  Product.find()
+  Completed_Table.find()
     .then((response) => {
       res.json(response);
     })
