@@ -1,0 +1,44 @@
+#senior-manager {
+  display: flex;
+}
+
+#manager {
+  padding: 30px;
+  text-align: center;
+  width: 50%;
+}
+
+#senior {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+#about-senior {
+  padding: 30px;
+  text-align: justify;
+  width: 50%;
+  color: white;
+}
+
+#junior-asistant {
+  display: flex;
+}
+
+#asistant {
+  padding: 30px;
+  text-align: center;
+  width: 50%;
+}
+
+#junior {
+  height: 300px;
+  width: 200px;
+}
+
+#about-junior {
+  padding: 30px;
+  text-align: justify;
+  width: 50%;
+  color: white;
+}
