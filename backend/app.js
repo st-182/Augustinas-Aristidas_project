@@ -5,6 +5,10 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import Completed_Table from "./models/completedTableModel.js";
+import {
+  getCompletedTables,
+  getCompletedTablesById,
+} from "./controllers/pages.controller.js";
 
 const app = express();
 dotenv.config();
@@ -29,10 +33,8 @@ mongoose
     );
   });
 
-app.use(`/`, (req, res) => {
-  Completed_Table.find()
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((err) => console.log(err));
-});
+app.get(`/`, getCompletedTables);
+app.get(`/completed/:id`, getCompletedTablesById);
+// app.put(`/`, getCompletedTables);
+// app.push(`/`, getCompletedTables);
+// app.delete(`/`, getCompletedTables);
