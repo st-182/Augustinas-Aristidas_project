@@ -32,7 +32,7 @@ const Product = mongoose.model("Product", {
   img: String,
 });
 
-app.use(`/`, (req, res) => {
+app.use(`/api`, (req, res) => {
   Product.find()
     .then((response) => {
       res.json(response);
