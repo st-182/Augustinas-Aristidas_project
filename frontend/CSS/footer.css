@@ -1,0 +1,91 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
+  color: white;
+}
+
+#icons {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fa-facebook {
+  color: white;
+}
+
+.fa-facebook:hover {
+  color: orangered;
+}
+
+.fa-twitter {
+  color: white;
+}
+
+.fa-twitter:hover {
+  color: orangered;
+}
+
+.fa-instagram {
+  color: white;
+}
+
+.fa-instagram:hover {
+  color: orangered;
+}
+
+.help {
+  display: flex;
+  flex-direction: column;
+}
+
+#faq {
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#faq:hover {
+  color: orangered;
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+}
+
+#security {
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#security:hover {
+  color: orangered;
+}
+
+#privacy {
+  margin-top: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+#privacy:hover {
+  color: orangered;
+}
+
+#terms {
+  margin-top: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+#terms:hover {
+  color: orangered;
+}

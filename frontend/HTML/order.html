@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Festive&family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -14,6 +20,7 @@
     <!-- <link rel="stylesheet" href="../CSS/style.css" /> -->
     <link rel="stylesheet" href="../CSS/order.css" />
     <link rel="stylesheet" href="../CSS/navigation.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
     <script defer src="../JS/script.js"></script>
     <script defer src="../JS/orders.js"></script>
     <title>Order your table</title>
@@ -22,7 +29,11 @@
     <header class="header">
       <div class="heading">
         <div class="logo">
-          <img src="https://img.furniture1.eu/v7/_v2_/888/888023.jpg" alt="" />
+          <img
+            id="logo-image"
+            src="https://img.furniture1.eu/v7/_v2_/888/888023.jpg"
+            alt=""
+          />
         </div>
         <h2 class="navigation-toggler"><i class="fas fa-grip-lines"></i></h2>
         <div class="navbb">
@@ -98,6 +109,23 @@
       </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <p id="date"></p>
+      <div id="icons">
+        <a href=""><i class="fab fa-facebook"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="help">
+        <p>Help</p>
+        <a id="faq" href="FAQ">FAQ</a>
+      </div>
+      <div class="legal">
+        <p>Legal</p>
+        <a id="security" href="Privacy & Security">Privacy & Security</a>
+        <a id="privacy" href="Privacy Policy"> Privacy Policy</a>
+        <a id="terms" href="Terms and conditions">Terms and conditions</a>
+      </div>
+    </footer>
   </body>
 </html>
