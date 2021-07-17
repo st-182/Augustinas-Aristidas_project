@@ -1,0 +1,100 @@
+#contact-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px;
+}
+
+.fa-mobile {
+  color: white;
+  padding-left: 100px;
+  margin-bottom: 30px;
+}
+
+.fa-mobile:hover {
+  color: orangered;
+}
+
+.fa-warehouse {
+  color: white;
+  padding-left: 100px;
+  margin-bottom: 30px;
+}
+
+.fa-warehouse:hover {
+  color: orangered;
+}
+
+.fa-envelope-open-text {
+  color: white;
+  padding-left: 100px;
+  margin-bottom: 30px;
+}
+
+.fa-envelope-open-text:hover {
+  color: orangered;
+}
+
+.names {
+  margin: 20px;
+  color: white;
+}
+
+.operations {
+  margin: 10px;
+  color: white;
+}
+
+.operations-time {
+  color: white;
+}
+
+.phone-number {
+  color: white;
+}
+
+.find-us-text {
+  color: white;
+}
+
+.find-store {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.find-store:hover {
+  background-color: orangered;
+}
+
+.contacting-hours {
+  color: white;
+  margin: 10px;
+}
+
+.contacting-email {
+  color: white;
+  margin: 10px;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textw {
+  color: white;
+  margin-bottom: 30px;
+}
+
+#find-us-map {
+  margin-bottom: 30px;
+}
+
+.mobile-box i {
+  font-size: 2rem;
+}

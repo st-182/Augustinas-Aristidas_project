@@ -27,3 +27,7 @@ h2 {
   width: 100%;
 }
 
+input {
+  height: 30px;
+  width: 300px;
+}

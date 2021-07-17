@@ -13,7 +13,7 @@ body {
   color: white;
   padding: 10px;
   background-color: black;
-  justify-content: space-between;
+
   width: 100%;
 }
 
@@ -30,15 +30,22 @@ body {
   width: 100px;
 }
 
+.space-tables {
+  color: orangered;
+  font-size: 50px;
+  margin-left: 600px;
+}
+
 .fa-grip-lines {
   color: white;
   font-size: 30px;
   position: relative;
-  left: 1750px;
+  left: 600px;
 }
 
 .fa-grip-lines:hover {
   cursor: pointer;
+  color: orangered;
 }
 
 .navb {
@@ -63,5 +70,5 @@ body {
   width: 200px;
   display: none;
   position: relative;
-  left: 1300px;
+  left: 300px;
 }
