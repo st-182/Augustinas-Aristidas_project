@@ -9,9 +9,8 @@
 }
 
 #senior {
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
+  height: auto;
+  width: 100%;
 }
 
 #about-senior {
@@ -32,8 +31,8 @@
 }
 
 #junior {
-  height: 420px;
-  width: 200px;
+  height: auto;
+  width: 100%;
 }
 
 #about-junior {
@@ -54,8 +53,8 @@
 }
 
 #people {
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: 100%;
 }
 
 #about-command {
@@ -63,4 +62,24 @@
   text-align: justify;
   width: 50%;
   color: white;
+}
+
+@media screen and (max-width: 546px) {
+  #senior-manager {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #junior-asistant {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #all-command {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
