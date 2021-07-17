@@ -39,7 +39,7 @@ let completedTable = [
     image: `https://www.peppermillinteriors.com/image/catalog/products/TB-1833-PEP%20-%20Vintage%20Height%20Adjustable%20Cast%20Iron%20Dining%20Table/vintage-height-adjustable-cast-iron-dining-table.jpg`,
     name: `Vintage Height Adjustable Cast Iron Dining Table`,
     sizes: `diameter: 120cm, heigh: 81cm`,
-    color: `brown`,
+    color: `brown`, 
     material: `pine, cast iron`,
   },
   {

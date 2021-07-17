@@ -90,8 +90,30 @@ const plasticTypes = [
 ];
 
 // Functions
+
+//! ========!!!THIS IS ALERT!!!=============
+
+const chooseAnOption = () => {
+  // Swal.fire({
+  //   title:
+  //     "Hello! Do you want to order a custom table or construct your table using our constructor?",
+  //   showDenyButton: true,
+  //   showCancelButton: true,
+  //   confirmButtonText: `Save`,
+  //   denyButtonText: `Don't save`,
+  // }).then((result) => {
+  //   /* Read more about isConfirmed, isDenied below */
+  //   if (result.isConfirmed) {
+  //     Swal.fire("Saved!", "", "success");
+  //   } else if (result.isDenied) {
+  //     Swal.fire("Changes are not saved", "", "info");
+  //   }
+  // });
+};
+
 //! ========!!!THIS IS RENDERING!!!=============
 const renderOptions = (e) => {
+  // chooseAnOption();
   renderSizeOptions(sizeLength, lengthOptionElement, 8);
   renderSizeOptions(sizeWidth, widthOptionElement, 7);
   renderSizeOptions(sizeHeight, diameterOptionElement, 9);
@@ -188,9 +210,8 @@ const sendOrderToBackend = (e) => {
   }
   console.groupEnd(`Data`);
   for (let i = 0; i < e.target.length - 1; i++) {
-     e.target[i].value
+    e.target[i].value;
   }
-
 };
 
 // Events
