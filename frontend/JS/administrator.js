@@ -5,7 +5,7 @@ const ENDPOINT_API = 'http://localhost:5000/api/portfolio/';
 const tableOutput = document.querySelector('#table-output');
 
 // functions
-// gallery ---------------------------------------------------------------------------------------------
+// admin ---------------------------------------------------------------------------------------------
 // -- GET data
 function getTableInformation() {
   return fetch(ENDPOINT_API)
