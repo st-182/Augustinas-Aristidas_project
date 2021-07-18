@@ -70,28 +70,44 @@
       <section>
         <form id="new-custom-order" class="none">
           <!-- name  -->
-          <label for="form__name">Name</label>
-          <input type="text" id="form__name" placeholder="Petras" required />
+          <label class="form__labels" for="form__name">Name</label>
+          <input
+            type="text"
+            id="form__name"
+            placeholder="Petras"
+            required
+          /><br />
           <!-- surname -->
-          <label for="form__surname">Surname</label>
-          <input type="text" id="form__surname" placeholder="Slekys" required />
+          <label class="form__labels" for="form__surname">Surname</label>
+          <input
+            type="text"
+            id="form__surname"
+            placeholder="Slekys"
+            required
+          /><br />
           <!-- email  -->
-          <label for="form__email">Email</label>
+          <label class="form__labels" for="form__email">Email</label>
           <input
             type="email"
             id="form__email"
             placeholder="petras@example.com"
             required
-          />
+          /><br />
           <!-- phone  -->
-          <label for="form__phone">Phone</label>
-          <input type="text" id="form__phone" placeholder="+37065499900" />
+          <label class="form__labels" for="form__phone">Phone</label>
+          <input
+            type="text"
+            id="form__phone"
+            placeholder="+37065499900"
+          /><br />
 
           <!-- description -->
-          <label for="form__description">Other important details</label>
-          <textarea id="form__description"></textarea>
+          <label class="form__labels" for="form__description"
+            >Other important details</label
+          >
+          <textarea id="form__description"></textarea><br />
           <!-- submit -->
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" id="form__submit" />
         </form>
         <!-- a  -->
         <!-- a  -->
@@ -100,13 +116,13 @@
         <!-- a  -->
         <form id="new-constructor-order" class="none">
           <!-- name  -->
-          <label for="form__name">Name</label>
+          <label class="form__labels" for="form__name">Name</label>
           <input type="text" id="form__name" placeholder="Petras" required />
           <!-- surname -->
-          <label for="form__surname">Surname</label>
+          <label class="form__labels" for="form__surname">Surname</label>
           <input type="text" id="form__surname" placeholder="Slekys" required />
           <!-- email  -->
-          <label for="form__email">Email</label>
+          <label class="form__labels" for="form__email">Email</label>
           <input
             type="email"
             id="form__email"
@@ -114,39 +130,45 @@
             required
           />
           <!-- phone  -->
-          <label for="form__phone">Phone</label>
+          <label class="form__labels" for="form__phone">Phone</label>
           <input type="text" id="form__phone" placeholder="+37065499900" />
           <div class="grid">
             <!-- shapes -->
-            <label for="form__shape">Shape of your table</label>
+            <label class="form__labels" for="form__shape"
+              >Shape of your table</label
+            >
             <select id="form__shape">
               <option value="square" selected="selected">Square</option>
               <option value="round">Round</option>
             </select>
             <!-- --- length -->
-            <label for="form__length">Length</label>
+            <label class="form__labels" for="form__length">Length</label>
             <select id="form__length"></select>
             <!-- --- width -->
-            <label for="form__width">Width</label>
+            <label class="form__labels" for="form__width">Width</label>
             <select id="form__width"></select>
             <!-- --- diameter -->
-            <label for="form__diameter">Diameter</label>
+            <label class="form__labels" for="form__diameter">Diameter</label>
             <select id="form__diameter"></select>
             <!-- --- height -->
-            <label for="form__height">Height</label>
+            <label class="form__labels" for="form__height">Height</label>
             <select id="form__height"></select>
             <!-- color -->
-            <label for="form__color">Color</label>
+            <label class="form__labels" for="form__color">Color</label>
             <select id="form__color"></select>
             <!-- type of materials -->
-            <label for="form__materials">Material type</label>
+            <label class="form__labels" for="form__materials"
+              >Material type</label
+            >
             <select id="form__materials"></select>
             <!-- list of materials -->
-            <label for="form__materials-list">Materials</label>
+            <label class="form__labels" for="form__materials-list"
+              >Materials</label
+            >
             <select id="form__materials-list"></select>
           </div>
           <!-- submit -->
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" id="form__submit" />
         </form>
       </section>
     </main>

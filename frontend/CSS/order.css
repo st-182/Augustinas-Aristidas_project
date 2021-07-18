@@ -61,4 +61,129 @@ form {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+
+#form__name {
+  width: 300px;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+
+#form__surname {
+  width: 300px;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+
+#form__email {
+  width: 300px;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+
+#form__phone {
+  width: 300px;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+
+#form__description {
+  width: 300px;
+  margin-bottom: 30px;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+}
+
+#form__submit {
+  width: 300px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#form__submit:hover {
+  background-color: orangered;
+}
+
+.form__labels {
+  margin-bottom: 5px;
+}
+
+.grid {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#form__shape {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__length {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__width {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__diameter {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__height {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__color {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__materials {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
+
+#form__materials-list {
+  margin-bottom: 10px;
+  width: 140px;
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+}
 /*# sourceMappingURL=order.css.map */
