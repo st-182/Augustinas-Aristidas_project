@@ -12,12 +12,12 @@ h2 {
 #main-page {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 #video-file {
-  width: 1000px;
-  height: 600px;
+  margin: 20px;
+  margin-right: 30px;
 }
 
 #mainVideo {
@@ -25,6 +25,10 @@ h2 {
   background-color: black;
   height: 100%;
   width: 100%;
+}
+
+.making-desk-video {
+  margin: 30px;
 }
 
 #index-email {
@@ -40,6 +44,31 @@ h2 {
 #index-register {
   height: 30px;
   width: 300px;
+  border: none;
+  cursor: pointer;
+}
+
+#index-register:hover {
+  background-color: orangered;
+}
+
+.main-page-form {
+  margin: 30px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#videos {
+  width: 50%;
+}
+
+@media screen and (max-width: 546px) {
+  #main-page {
+    flex-direction: column;
+  }
 }
 
 .none-header {
