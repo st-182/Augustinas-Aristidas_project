@@ -8,6 +8,8 @@ const customOrderSchema = new Schema(
     email: { type: String, required: true },
     phone_number: { type: String, required: true },
     order_details: { type: String, required: true },
+    isDone: { type: String, required: true },
+    user_name: { type: String, required: true },
   },
   {
     timestamps: true,

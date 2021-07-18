@@ -38,7 +38,6 @@ const putNewConstructedOrder = (req, res) => {
 };
 
 const showAllOrders = (req, res) => {
-  let id = req.params.id;
   Order_a_Custom_Table.aggregate([
     { $unionWith: { coll: "order_constructed_tables" } },
   ])
@@ -47,10 +46,31 @@ const showAllOrders = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+const updateOrder = async (req, res) => {
+  let id = req.params.id;
+  await Order_a_Constructed_Table.findById(id).then((response) => {
+    // let responseArray = JSON.parse(response);
+    if (response) {
+      console.log(`found in Order_a_Constructed_Table`);
+      console.log(response);
+      res.json(response);
+    } else {
+      console.log(`found in Order_a_Custom_Table`);
+      console.log(response);
+
+      res.json(response.isDone);
+
+      // Order_a_Custom_Table.findByIdAndUpdate(id)
+    }
+  });
+};
+
 export {
   getCompletedTables,
   getCompletedTablesById,
   putNewCustomOrder,
   putNewConstructedOrder,
   showAllOrders,
+  updateOrder,
 };

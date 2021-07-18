@@ -10,6 +10,7 @@ import {
   putNewCustomOrder,
   putNewConstructedOrder,
   showAllOrders,
+  updateOrder,
 } from "./controllers/pages.controller.js";
 
 const app = express();
@@ -40,5 +41,6 @@ app.get(`/api/portfolio/:id`, getCompletedTablesById);
 app.post(`/api/orders/custom`, putNewCustomOrder);
 app.post(`/api/orders/constructed`, putNewConstructedOrder);
 app.get(`/api/orders`, showAllOrders);
+app.get(`/api/orders/:id`, updateOrder);
 // app.push(`/`, getCompletedTables);
 // app.delete(`/`, getCompletedTables);

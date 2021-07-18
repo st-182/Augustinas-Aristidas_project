@@ -254,12 +254,17 @@ const sendOrderToBackend = async (e) => {
       email: e.target[2].value,
       phone_number: e.target[3].value,
       table_shape: e.target[4].value,
-      table_length: e.target[5].value,
-      table_width: e.target[6].value,
-      table_diameter: e.target[7].value,
+      table_length:
+        e.target[4].value === "Round" ? undefined : e.target[5].value,
+      table_width:
+        e.target[4].value === "Round" ? undefined : e.target[6].value,
+      table_diameter:
+        e.target[4].value === "Square" ? undefined : e.target[7].value,
       table_height: e.target[8].value,
       table_order_color: e.target[9].value,
       table_order_materials: e.target[10].value,
+      isDone: false,
+      user_name: true,
     };
     await fetch(Constructed_URL, {
       method: `POST`,
@@ -278,6 +283,8 @@ const sendOrderToBackend = async (e) => {
       email: e.target[2].value,
       phone_number: e.target[3].value,
       order_details: e.target[4].value,
+      isDone: false,
+      user_name: true,
     };
     await fetch(Custom_URL, {
       method: `POST`,
