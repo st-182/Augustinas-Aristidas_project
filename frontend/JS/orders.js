@@ -1,4 +1,6 @@
 // Variables
+Custom_URL = `http://localhost:5000/api/orders/custom`;
+Constructed_URL = `http://localhost:5000/api/orders/constructed`;
 // - DOM elements
 const customFormElement = document.querySelector(`#new-custom-order`);
 const constructorFormElement = document.querySelector(`#new-constructor-order`);
@@ -13,7 +15,7 @@ const startTableConstructorElement = document.querySelector(
 );
 
 //
-const choseFormElement = document.querySelector(`#chose-a-form`);
+const chooseFormElement = document.querySelector(`#choose-a-form`);
 const changeFormElement = document.querySelector(`#change-a-form`);
 
 const lengthOptionElement = document.querySelector(`#form__length`);
@@ -59,7 +61,7 @@ const sizeDiameter = [
 ];
 
 const colors = [
-  "Blue ",
+  "Blue",
   "Green",
   "Red",
   "Orange",
@@ -101,22 +103,22 @@ const plasticTypes = [
 // Functions
 //! ========!!!THIS IS CUSTOM TABLE FORM OR TABLE CONSTRUCTOR!!!=============
 const showForm = (e) => {
-  console.log(e.target.id);
-  // console.log(choseFormElement.classList.contains(`none`));
-  if (!choseFormElement.classList.contains(`none`)) {
-    choseFormElement.classList.toggle(`none`);
+  // console.log(e.target.id);
+  // console.log(chooseFormElement.classList.contains(`none`));
+  if (!chooseFormElement.classList.contains(`none`)) {
+    chooseFormElement.classList.toggle(`none`);
     changeFormElement.classList.toggle(`none`);
   }
 
   if (`custom-table` === e.target.id || `custom-table-start` === e.target.id) {
-    console.log(`custom`);
+    // console.log(`custom`);
     constructorFormElement.classList.add(`none`);
     customFormElement.classList.remove(`none`);
   } else if (
     `table-constructor` === e.target.id ||
     `table-constructor-start` === e.target.id
   ) {
-    console.log(`constructor`);
+    // console.log(`constructor`);
     // `table-constructor-start` || `table-constructor`:
     customFormElement.classList.add(`none`);
     constructorFormElement.classList.remove(`none`);
@@ -127,7 +129,7 @@ const showForm = (e) => {
 
 const chooseAnOption = () => {
   Swal.fire("Any fool can use a computer");
-  
+
   // Swal.fire({
   //   title:
   //     "Hello! Do you want to order a custom table or construct your table using our constructor?",
@@ -150,8 +152,8 @@ const renderOptions = (e) => {
   // chooseAnOption();
   renderSizeOptions(sizeLength, lengthOptionElement, 8);
   renderSizeOptions(sizeWidth, widthOptionElement, 7);
-  renderSizeOptions(sizeHeight, diameterOptionElement, 8);
-  renderSizeOptions(sizeDiameter, heightOptionElement, 9);
+  renderSizeOptions(sizeHeight, heightOptionElement, 8);
+  renderSizeOptions(sizeDiameter, diameterOptionElement, 9);
   renderSizeOptions(colors, colorOptionElement, 0);
   renderSizeOptions(materialTypes, materialOptionElement, 0);
 
@@ -159,10 +161,10 @@ const renderOptions = (e) => {
     case "custom":
       renderCustom();
       break;
-    case "square":
+    case "Square":
       renderSquare();
       break;
-    case "round":
+    case "Round":
       renderRound();
       break;
   }
@@ -237,15 +239,54 @@ const renderMaterialList = () => {
 //! ========!!!RENDERING ENDED!!!=============
 //! ========!!!THIS IS CREATION OF OBJECT!!!=============
 
-const sendOrderToBackend = (e) => {
+const sendOrderToBackend = async (e) => {
   e.preventDefault();
   console.group(`Data`);
   for (let i = 0; i < e.target.length - 1; i++) {
     e.target[i].value ? console.log(e.target[i].value) : null;
   }
   console.groupEnd(`Data`);
-  for (let i = 0; i < e.target.length - 1; i++) {
-    e.target[i].value;
+  if (!constructorFormElement.classList.contains(`none`)) {
+    console.log(`Constructor form is submitted`);
+    let order = {
+      name: e.target[0].value,
+      surname: e.target[1].value,
+      email: e.target[2].value,
+      phone_number: e.target[3].value,
+      table_shape: e.target[4].value,
+      table_length: e.target[5].value,
+      table_width: e.target[6].value,
+      table_diameter: e.target[7].value,
+      table_height: e.target[8].value,
+      table_order_color: e.target[9].value,
+      table_order_materials: e.target[10].value,
+    };
+    await fetch(Constructed_URL, {
+      method: `POST`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    });
+    console.log(order);
+  }
+  if (!customFormElement.classList.contains(`none`)) {
+    console.log(`Custom form is submitted`);
+    let order = {
+      name: e.target[0].value,
+      surname: e.target[1].value,
+      email: e.target[2].value,
+      phone_number: e.target[3].value,
+      order_details: e.target[4].value,
+    };
+    await fetch(Custom_URL, {
+      method: `POST`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    });
+    console.log(order);
   }
 };
 

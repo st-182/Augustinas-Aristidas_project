@@ -1,5 +1,6 @@
 import Completed_Table from "../models/completedTableModel.js";
-import Order_a_Table from "../models/orderModel.js";
+import Order_a_Constructed_Table from "../models/constructorOrderModel.js";
+import Order_a_Custom_Table from "../models/customOrderModel.js";
 
 const getCompletedTables = (req, res) => {
   Completed_Table.find()
@@ -18,9 +19,18 @@ const getCompletedTablesById = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-const putNewOrder = (req, res) => {
-  let order = req.body
-  Order_a_Table.insertOne(order)
+const putNewCustomOrder = (req, res) => {
+  let order = req.body;
+  Order_a_Custom_Table.create(order)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => console.log(err));
+};
+
+const putNewConstructedOrder = (req, res) => {
+  let order = req.body;
+  Order_a_Constructed_Table.create(order)
     .then((response) => {
       res.json(response);
     })
@@ -29,7 +39,9 @@ const putNewOrder = (req, res) => {
 
 const showAllOrders = (req, res) => {
   let id = req.params.id;
-  Order_a_Table.find()
+  Order_a_Custom_Table.aggregate([
+    { $unionWith: { coll: "order_constructed_tables" } },
+  ])
     .then((response) => {
       res.json(response);
     })
@@ -38,6 +50,7 @@ const showAllOrders = (req, res) => {
 export {
   getCompletedTables,
   getCompletedTablesById,
-  putNewOrder,
+  putNewCustomOrder,
+  putNewConstructedOrder,
   showAllOrders,
 };

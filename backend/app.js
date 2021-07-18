@@ -7,7 +7,8 @@ import mongoose from "mongoose";
 import {
   getCompletedTables,
   getCompletedTablesById,
-  putNewOrder,
+  putNewCustomOrder,
+  putNewConstructedOrder,
   showAllOrders,
 } from "./controllers/pages.controller.js";
 
@@ -36,7 +37,8 @@ mongoose
 
 app.get(`/api/portfolio`, getCompletedTables);
 app.get(`/api/portfolio/:id`, getCompletedTablesById);
-// app.post(`/api/orders)`, putNewOrder);
+app.post(`/api/orders/custom`, putNewCustomOrder);
+app.post(`/api/orders/constructed`, putNewConstructedOrder);
 app.get(`/api/orders`, showAllOrders);
 // app.push(`/`, getCompletedTables);
 // app.delete(`/`, getCompletedTables);
