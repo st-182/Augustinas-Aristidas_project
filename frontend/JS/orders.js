@@ -1,7 +1,20 @@
 // Variables
 // - DOM elements
-const formElement = document.querySelector(`#new-order`);
+const customFormElement = document.querySelector(`#new-custom-order`);
+const constructorFormElement = document.querySelector(`#new-constructor-order`);
 const tableTypeElement = document.querySelector(`#form__shape`);
+
+//buttons which you see first on page
+const customTableElement = document.querySelector(`#custom-table`);
+const tableConstructorElement = document.querySelector(`#table-constructor`);
+const startCustomTableElement = document.querySelector(`#custom-table-start`);
+const startTableConstructorElement = document.querySelector(
+  `#table-constructor-start`
+);
+
+//
+const choseFormElement = document.querySelector(`#chose-a-form`);
+const changeFormElement = document.querySelector(`#change-a-form`);
 
 const lengthOptionElement = document.querySelector(`#form__length`);
 const widthOptionElement = document.querySelector(`#form__width`);
@@ -19,7 +32,6 @@ const sizeLength = [
   "length: 200cm",
   "length: 190cm",
   "length: 180cm",
-  "length: custom",
 ];
 const sizeWidth = [
   "width: 120cm",
@@ -27,7 +39,6 @@ const sizeWidth = [
   "width: 95cm",
   "width: 90cm",
   "width: 80cm",
-  "width: custom",
 ];
 const sizeHeight = [
   "height: 100cm",
@@ -38,7 +49,6 @@ const sizeHeight = [
   "height: 75cm",
   "height: 73cm",
   "height: 70cm",
-  "height: custom",
 ];
 const sizeDiameter = [
   "diameter: 150cm",
@@ -46,7 +56,6 @@ const sizeDiameter = [
   "diameter: 100cm",
   "diameter: 90cm",
   "diameter: 80cm",
-  "diameter: custom",
 ];
 
 const colors = [
@@ -90,10 +99,34 @@ const plasticTypes = [
 ];
 
 // Functions
+//! ========!!!THIS IS CUSTOM TABLE FORM OR TABLE CONSTRUCTOR!!!=============
+const showForm = (e) => {
+  console.log(e.target.id);
+  // console.log(choseFormElement.classList.contains(`none`));
+  if (!choseFormElement.classList.contains(`none`)) {
+    choseFormElement.classList.toggle(`none`);
+    changeFormElement.classList.toggle(`none`);
+  }
+
+  if (`custom-table` === e.target.id || `custom-table-start` === e.target.id) {
+    console.log(`custom`);
+    constructorFormElement.classList.add(`none`);
+    customFormElement.classList.remove(`none`);
+  } else if (
+    `table-constructor` === e.target.id ||
+    `table-constructor-start` === e.target.id
+  ) {
+    console.log(`constructor`);
+    // `table-constructor-start` || `table-constructor`:
+    customFormElement.classList.add(`none`);
+    constructorFormElement.classList.remove(`none`);
+  }
+};
 
 //! ========!!!THIS IS ALERT!!!=============
 
 const chooseAnOption = () => {
+  Swal.fire("Any fool can use a computer");
   // Swal.fire({
   //   title:
   //     "Hello! Do you want to order a custom table or construct your table using our constructor?",
@@ -217,5 +250,11 @@ const sendOrderToBackend = (e) => {
 // Events
 document.addEventListener(`DOMContentLoaded`, renderOptions);
 tableTypeElement.addEventListener(`change`, renderOptions);
-formElement.addEventListener(`submit`, sendOrderToBackend);
+constructorFormElement.addEventListener(`submit`, sendOrderToBackend);
+customFormElement.addEventListener(`submit`, sendOrderToBackend);
 materialOptionElement.addEventListener(`change`, renderMaterialList);
+
+startCustomTableElement.addEventListener(`click`, showForm);
+startTableConstructorElement.addEventListener(`click`, showForm);
+customTableElement.addEventListener(`click`, showForm);
+tableConstructorElement.addEventListener(`click`, showForm);

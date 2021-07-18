@@ -57,11 +57,17 @@
       </section>
       <!-- start info -->
       <section>
-        <div class="chose-a-form">
+        <div id="chose-a-form" class="chose-a-form">
           <h1>
-            Hello! Do you want to order a <button>Custom table</button> or
-            construct your table using our <button>Constructor</button>?
+            Hello! Do you want to order a
+            <button id="custom-table-start">Custom table</button> or construct
+            your table using our
+            <button id="table-constructor-start">Constructor</button>?
           </h1>
+        </div>
+        <div id="change-a-form" class="none change-a-form">
+          <button id="custom-table">Custom table</button>
+          <button id="table-constructor">Constructor</button>
         </div>
       </section>
       <!-- Order form  -->
@@ -69,48 +75,22 @@
         <form id="new-custom-order" class="none">
           <!-- name  -->
           <label for="form__name">Name</label>
-          <input type="text" id="form__name" placeholder="Petras" />
+          <input type="text" id="form__name" placeholder="Petras" required />
           <!-- surname -->
           <label for="form__surname">Surname</label>
-          <input type="text" id="form__surname" placeholder="Slekys" />
+          <input type="text" id="form__surname" placeholder="Slekys" required />
           <!-- email  -->
           <label for="form__email">Email</label>
           <input
             type="email"
             id="form__email"
             placeholder="petras@example.com"
+            required
           />
           <!-- phone  -->
           <label for="form__phone">Phone</label>
           <input type="text" id="form__phone" placeholder="+37065499900" />
-          <!-- shapes -->
-          <label for="form__shape">Shape of your table</label>
-          <select id="form__shape">
-            <option value="custom">Custom</option>
-            <option value="square" selected="selected">Square</option>
-            <option value="round">Round</option>
-          </select>
-          <!-- --- length -->
-          <label for="form__length">Length</label>
-          <select id="form__length"></select>
-          <!-- --- width -->
-          <label for="form__width">Width</label>
-          <select id="form__width"></select>
-          <!-- --- diameter -->
-          <label for="form__diameter">Diameter</label>
-          <select id="form__diameter"></select>
-          <!-- --- height -->
-          <label for="form__height">Height</label>
-          <select id="form__height"></select>
-          <!-- color -->
-          <label for="form__color">Color</label>
-          <select id="form__color"></select>
-          <!-- type of materials -->
-          <label for="form__materials">Material type</label>
-          <select id="form__materials"></select>
-          <!-- list of materials -->
-          <label for="form__materials-list">Materials</label>
-          <select id="form__materials-list"></select>
+
           <!-- description -->
           <label for="form__description">Other important details</label>
           <textarea id="form__description"></textarea>
@@ -125,48 +105,51 @@
         <form id="new-constructor-order" class="none">
           <!-- name  -->
           <label for="form__name">Name</label>
-          <input type="text" id="form__name" placeholder="Petras" />
+          <input type="text" id="form__name" placeholder="Petras" required />
           <!-- surname -->
           <label for="form__surname">Surname</label>
-          <input type="text" id="form__surname" placeholder="Slekys" />
+          <input type="text" id="form__surname" placeholder="Slekys" required />
           <!-- email  -->
           <label for="form__email">Email</label>
           <input
             type="email"
             id="form__email"
             placeholder="petras@example.com"
+            required
           />
           <!-- phone  -->
           <label for="form__phone">Phone</label>
           <input type="text" id="form__phone" placeholder="+37065499900" />
-          <!-- shapes -->
-          <label for="form__shape">Shape of your table</label>
-          <select id="form__shape">
-            <option value="custom">Custom</option>
-            <option value="square" selected="selected">Square</option>
-            <option value="round">Round</option>
-          </select>
-          <!-- --- length -->
-          <label for="form__length">Length</label>
-          <select id="form__length"></select>
-          <!-- --- width -->
-          <label for="form__width">Width</label>
-          <select id="form__width"></select>
-          <!-- --- diameter -->
-          <label for="form__diameter">Diameter</label>
-          <select id="form__diameter"></select>
-          <!-- --- height -->
-          <label for="form__height">Height</label>
-          <select id="form__height"></select>
-          <!-- color -->
-          <label for="form__color">Color</label>
-          <select id="form__color"></select>
-          <!-- type of materials -->
-          <label for="form__materials">Material type</label>
-          <select id="form__materials"></select>
-          <!-- list of materials -->
-          <label for="form__materials-list">Materials</label>
-          <select id="form__materials-list"></select>
+          <div class="grid">
+            <!-- shapes -->
+            <label for="form__shape">Shape of your table</label>
+            <select id="form__shape">
+              <option value="custom">Custom</option>
+              <option value="square" selected="selected">Square</option>
+              <option value="round">Round</option>
+            </select>
+            <!-- --- length -->
+            <label for="form__length">Length</label>
+            <select id="form__length"></select>
+            <!-- --- width -->
+            <label for="form__width">Width</label>
+            <select id="form__width"></select>
+            <!-- --- diameter -->
+            <label for="form__diameter">Diameter</label>
+            <select id="form__diameter"></select>
+            <!-- --- height -->
+            <label for="form__height">Height</label>
+            <select id="form__height"></select>
+            <!-- color -->
+            <label for="form__color">Color</label>
+            <select id="form__color"></select>
+            <!-- type of materials -->
+            <label for="form__materials">Material type</label>
+            <select id="form__materials"></select>
+            <!-- list of materials -->
+            <label for="form__materials-list">Materials</label>
+            <select id="form__materials-list"></select>
+          </div>
           <!-- submit -->
           <input type="submit" value="Submit" />
         </form>
