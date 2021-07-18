@@ -28,34 +28,34 @@ const materialListOptionElement = document.querySelector(
 
 // - logic
 const sizeLength = [
-  "length: 250cm",
-  "length: 200cm",
-  "length: 190cm",
-  "length: 180cm",
+  "Length: 250cm",
+  "Length: 200cm",
+  "Length: 190cm",
+  "Length: 180cm",
 ];
 const sizeWidth = [
-  "width: 120cm",
-  "width: 100cm",
-  "width: 95cm",
-  "width: 90cm",
-  "width: 80cm",
+  "Width: 120cm",
+  "Width: 100cm",
+  "Width: 95cm",
+  "Width: 90cm",
+  "Width: 80cm",
 ];
 const sizeHeight = [
-  "height: 100cm",
-  "height: 90cm",
-  "height: 85cm",
-  "height: 80cm",
-  "height: 77cm",
-  "height: 75cm",
-  "height: 73cm",
-  "height: 70cm",
+  "Height: 100cm",
+  "Height: 90cm",
+  "Height: 85cm",
+  "Height: 80cm",
+  "Height: 77cm",
+  "Height: 75cm",
+  "Height: 73cm",
+  "Height: 70cm",
 ];
 const sizeDiameter = [
-  "diameter: 150cm",
-  "diameter: 120cm",
-  "diameter: 100cm",
-  "diameter: 90cm",
-  "diameter: 80cm",
+  "Diameter: 150cm",
+  "Diameter: 120cm",
+  "Diameter: 100cm",
+  "Diameter: 90cm",
+  "Diameter: 80cm",
 ];
 
 const colors = [
@@ -127,6 +127,7 @@ const showForm = (e) => {
 
 const chooseAnOption = () => {
   Swal.fire("Any fool can use a computer");
+  
   // Swal.fire({
   //   title:
   //     "Hello! Do you want to order a custom table or construct your table using our constructor?",
