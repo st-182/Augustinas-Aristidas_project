@@ -49,10 +49,10 @@ async function getTableInformation() {
             table.table_order_materials ? table.table_order_materials : "-"
           }</td>
           <td class="main__table-btns">
-          <button class="underway-btn" data-id="${table._id}">Underway</button>
-          <button class="accomplished-btn" data-id="${
+          <button class="inProgress-btn" data-id="${table._id}">In progress</button>
+          <button class="done-btn" data-id="${
             table._id
-          }">Accomplished</button>
+          }">Done</button>
           </td>
          </tr>
           `;
