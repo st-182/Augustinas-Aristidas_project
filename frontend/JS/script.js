@@ -8,11 +8,11 @@ const footer = document.querySelector("#date");
 let showingMenu = false;
 const toggleMenu = () => {
   if (showingMenu) {
-    menu.style.display = "none";
+    menu.classList.add("none-header");
     showingMenu = false;
   } else {
     let headerHeight = document.querySelector(".heading").offsetHeight;
-    menu.style.display = "block";
+    menu.classList.remove("none-header");
     console.log(headerHeight);
     menu.style.top = `${headerHeight}px`;
 
