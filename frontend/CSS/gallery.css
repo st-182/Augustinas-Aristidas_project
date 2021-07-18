@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 #output {
   display: grid;
   gap: 20px;
@@ -18,7 +20,7 @@ img {
   position: absolute;
   top: 0;
   color: white;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Inter', sans-serif;
   height: 100%;
   width: 100%;
   transition: 500ms;
@@ -39,18 +41,22 @@ img {
 
 .name {
   display: none;
+  margin: 5px;
 }
 
 .size {
   display: none;
+  margin: 5px;
 }
 
 .color {
   display: none;
+  margin: 5px;
 }
 
 .material {
   display: none;
+  margin: 5px;
 }
 
 @media screen and (min-width: 546px) {

@@ -36,5 +36,6 @@ function getDeskInformation() {
     .catch((err) => console.log(err));
 }
 
+// events
 document.addEventListener("DOMContentLoaded", getDeskInformation);
 // ------------------------------------------------------------------------------------------------------

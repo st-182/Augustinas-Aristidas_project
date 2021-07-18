@@ -1,0 +1,73 @@
+#table-output {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main-table {
+  width: 100%;
+  color: white;
+}
+
+.main__table-image {
+  height: auto;
+  width: 100%;
+}
+
+.main__table-images {
+  width: 100px;
+  padding: 10px;
+}
+
+.main__table-names {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.main__table-sizes {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.main__table-colors {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.main__table-materials {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.main__table-btns {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.delete-btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.delete-btn:hover {
+  background-color: red;
+}
+
+.change-btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+.change-btn:hover {
+  background-color: greenyellow;
+}
