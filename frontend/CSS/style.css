@@ -34,11 +34,15 @@ h2 {
 #index-email {
   height: 30px;
   width: 300px;
+  border-radius: 10px;
+  border: none;
 }
 
 #index-password {
   height: 30px;
   width: 300px;
+  border-radius: 10px;
+  border: none;
 }
 
 #index-register {
@@ -46,6 +50,7 @@ h2 {
   width: 300px;
   border: none;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 #index-register:hover {
