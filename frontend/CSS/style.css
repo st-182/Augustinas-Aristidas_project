@@ -27,7 +27,17 @@ h2 {
   width: 100%;
 }
 
-input {
+#index-email {
+  height: 30px;
+  width: 300px;
+}
+
+#index-password {
+  height: 30px;
+  width: 300px;
+}
+
+#index-register {
   height: 30px;
   width: 300px;
 }

@@ -89,3 +89,9 @@ footer {
 #terms:hover {
   color: orangered;
 }
+
+@media screen and (max-width: 546px) {
+  footer {
+    flex-direction: column;
+  }
+}

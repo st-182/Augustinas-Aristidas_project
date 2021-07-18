@@ -1,17 +1,25 @@
 #senior-manager {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 #manager {
   padding: 30px;
   text-align: center;
   width: 50%;
+  background-image: url(https://imgix.bustle.com/uploads/image/2021/4/25/da14410b-af3e-4ffb-9961-73d847dbd67c-avengers-tony-stark-iron-man-movie-hd-wallpaper-2880x1800-1920x1080.jpeg?w=350&h=298&fit=crop&crop=faces&auto=format%2Ccompress&blend=000000&blendAlpha=45&blendMode=normal);
+  background-size: cover;
+  background-position: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 #senior {
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
+  height: auto;
+  width: 100%;
 }
 
 #about-senior {
@@ -23,39 +31,56 @@
 
 #junior-asistant {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 #asistant {
   padding: 30px;
   text-align: center;
   width: 50%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYJ1HcTBOVUituG8__78WRnAqkxKZ0Uqlqgg&usqp=CAU);
+  background-size: cover;
+  background-position: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 #junior {
-  height: 420px;
-  width: 200px;
+  height: auto;
+  width: 100%;
 }
 
 #about-junior {
   padding: 30px;
   text-align: justify;
-  width: 50%;
+  width: 33%;
   color: white;
 }
 
 #all-command {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #command {
   padding: 30px;
   text-align: center;
   width: 50%;
+  background-image: url(https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Library-Sites-shared-library-web/default/dw4d8a5a9f/Web_Revamp_Contribution/homepage/triple-pushes/ACV-Standard-Edition-Triple.jpg?sw=630&sh=330&sm=fit);
+  background-size: cover;
+  background-position: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 #people {
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: 100%;
 }
 
 #about-command {
@@ -63,4 +88,70 @@
   text-align: justify;
   width: 50%;
   color: white;
+}
+
+.team--content--name {
+  margin-bottom: 20px;
+}
+
+.specialty1 {
+  margin-bottom: 10px;
+}
+
+.specialty2 {
+  margin-bottom: 10px;
+}
+
+.specialty3 {
+  margin-bottom: 10px;
+}
+
+.team--content--paragraph {
+  margin-bottom: 10px;
+}
+
+.fab1 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.fab2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.fab3 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.about-us-name {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 546px) {
+  #senior-manager {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #junior-asistant {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #all-command {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #about-junior {
+    width: 50%;
+  }
 }
