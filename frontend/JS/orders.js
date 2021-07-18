@@ -149,7 +149,7 @@ const renderOptions = (e) => {
   // chooseAnOption();
   renderSizeOptions(sizeLength, lengthOptionElement, 8);
   renderSizeOptions(sizeWidth, widthOptionElement, 7);
-  renderSizeOptions(sizeHeight, diameterOptionElement, 9);
+  renderSizeOptions(sizeHeight, diameterOptionElement, 8);
   renderSizeOptions(sizeDiameter, heightOptionElement, 9);
   renderSizeOptions(colors, colorOptionElement, 0);
   renderSizeOptions(materialTypes, materialOptionElement, 0);
@@ -208,11 +208,12 @@ const renderRound = () => {
 };
 
 const renderSizeOptions = (array, DOMElement, sliceParam) => {
-  array.forEach(
-    (item) =>
-      (DOMElement.innerHTML += `
+  DOMElement.innerHTML = array.reduce(
+    (acc, item) =>
+      (acc += `
       <option value="${item}">${item.slice(sliceParam, 30)}</option>
-      `)
+      `),
+    ``
   );
 };
 
