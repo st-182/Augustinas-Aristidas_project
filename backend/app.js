@@ -23,6 +23,7 @@ mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then((result) => {
     console.log(`connected to mongoDB`.rainbow);

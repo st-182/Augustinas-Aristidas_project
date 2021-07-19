@@ -1,3 +1,5 @@
+//Import of Sweet Alert 2
+// import Swal from "sweetalert2";
 // API
 const ENDPOINT_ORDER_API = "http://localhost:5000/api/orders/";
 
@@ -49,10 +51,10 @@ async function getTableInformation() {
             table.table_order_materials ? table.table_order_materials : "-"
           }</td>
           <td class="main__table-btns">
-          <button class="inProgress-btn" data-id="${table._id}">In progress</button>
-          <button class="done-btn" data-id="${
-            table._id
-          }">Done</button>
+          <button class="inProgress-btn" data-id="${table._id}" style="${
+          table.isDone === `true` ? `background-color: #0d296a;` : ``
+        }" ${table.isDone === `true` ? `disabled` : ``} >In progress</button>
+          <button class="done-btn" data-id="${table._id}">Done</button>
           </td>
          </tr>
           `;
@@ -63,11 +65,12 @@ async function getTableInformation() {
       console.log(ENDPOINT_ORDER_API);
     })
     .catch((err) => console.log(err));
+  // makeBtnActive();
 }
 
 const selectAllBtn = () => {
-  const allInProgressBtn = document.querySelectorAll(".underway-btn");
-  const allDoneBtn = document.querySelectorAll(".accomplished-btn");
+  const allInProgressBtn = document.querySelectorAll(".inProgress-btn");
+  const allDoneBtn = document.querySelectorAll(".done-btn");
   allInProgressBtn.forEach((item) =>
     item.addEventListener(`click`, updateStatusOfAnOrder)
   );
@@ -84,11 +87,25 @@ const updateStatusOfAnOrder = (e) => {
       "Content-type": `application/json`,
     },
     body: JSON.stringify({ isDone: `true` }),
+  }).then((res) => {
+    console.log(res.status);
+    if (res.status === 200) {
+      Swal.fire(
+        "The request is successful!",
+        "Now reloading the page!",
+        "success"
+      );
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }
   });
 };
 const sendOrderToCompletedTables = (e) => {
   console.log(e.target.dataset.id);
 };
+
+const makeBtnActive = (e) => {};
 
 // events
 document.addEventListener("DOMContentLoaded", getTableInformation);

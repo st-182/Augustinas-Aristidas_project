@@ -9,6 +9,10 @@ h2 {
   margin-bottom: 30px;
 }
 
+input {
+  padding: 0 10px;
+}
+
 #main-page {
   display: flex;
   align-items: center;
