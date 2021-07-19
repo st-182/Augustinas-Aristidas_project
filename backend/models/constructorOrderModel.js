@@ -14,6 +14,7 @@ const constructorOrderSchema = new Schema(
     table_height: { type: String, required: true },
     table_order_color: { type: String, required: true },
     table_order_materials: { type: String, required: true },
+    inProgress: { type: String, required: true },
     isDone: { type: String, required: true },
     user_name: { type: String, required: true },
   },

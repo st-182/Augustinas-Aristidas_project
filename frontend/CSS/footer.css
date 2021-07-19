@@ -1,20 +1,28 @@
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
   color: white;
 }
 
+.footer-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.social-links,
+.help-links,
+.legal-links {
+  width: 100%;
+}
+
 #icons {
-  width: 150px;
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 40px;
 }
 
 #icons i {
@@ -103,7 +111,7 @@ footer {
   color: orangered;
 }
 
-@media screen and (max-width: 546px) {
+@media screen and (min-width: 768px) {
   footer {
     flex-direction: column;
   }
