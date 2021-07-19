@@ -36,6 +36,7 @@ h2 {
   width: 300px;
   border-radius: 10px;
   border: none;
+  padding-left: 10px;
 }
 
 #index-password {
@@ -43,6 +44,7 @@ h2 {
   width: 300px;
   border-radius: 10px;
   border: none;
+  padding-left: 10px;
 }
 
 #index-register {
