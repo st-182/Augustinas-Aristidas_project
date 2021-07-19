@@ -272,6 +272,14 @@ const sendOrderToBackend = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(order),
+    }).then((res) => {
+      if (res.status === 200) {
+        Swal.fire(
+          "Your request was sent!",
+          `status code is ${res.status}`,
+          "success"
+        );
+      }
     });
     console.log(order);
   }
@@ -292,6 +300,14 @@ const sendOrderToBackend = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(order),
+    }).then((res) => {
+      if (res.status === 200) {
+        Swal.fire(
+          "Your request was sent!",
+          `status code is ${res.status}`,
+          "success"
+        );
+      }
     });
     console.log(order);
   }
