@@ -1,66 +1,48 @@
 //Import of Sweet Alert 2
 // import Swal from "sweetalert2";
 // API
-const ENDPOINT_ORDER_API = "http://localhost:5000/api/orders/";
+const ENDPOINT_ORDER_API = 'http://localhost:5000/api/orders/';
 
 // DOM variables
-const tableOutput = document.querySelector("#table-output");
+const adminInfoOutput = document.querySelector('#admin-info-output');
 
 // functions
 // admin ---------------------------------------------------------------------------------------------
 // -- GET data
-async function getTableInformation() {
+async function getUserInformation() {
   return await fetch(ENDPOINT_ORDER_API)
     .then((response) => response.json())
     .then((data) => {
-      let tables = data.reverse();
+      let cards = data.reverse();
 
-      let output = "";
+      let output = '';
 
-      for (let table of tables) {
+      for (let card of cards) {
         output += `
-        <table class="main-table">
-        <tbody id="main__table-body">
-         <tr>
-          <td class="main__table-names">${table.name}</td>
-          <td class="main__table-surnames">${table.surname}</td>
-          <td class="main__table-emails">${table.email}</td>
-          <td class="main__table-numbers">${table.phone_number}</td>
-          <td class="main__table-details">${
-            table.order_details ? table.order_details : "-"
-          }</td>
-          <td class="main__table-shapes">${
-            table.table_shape ? table.table_shape : "-"
-          }</td>
-          <td class="main__table-lengths">${
-            table.table_length ? table.table_length : "-"
-          }</td>
-          <td class="main__table-widths">${
-            table.table_width ? table.table_width : "-"
-          }</td>
-          <td class="main__table-diameters">${
-            table.table_diameter ? table.table_diameter : "-"
-          }</td>
-          <td class="main__table-heights">${
-            table.table_height ? table.table_height : "-"
-          }</td>
-          <td class="main__table-colors">${
-            table.table_order_color ? table.table_order_color : "-"
-          }</td>
-          <td class="main__table-materials">${
-            table.table_order_materials ? table.table_order_materials : "-"
-          }</td>
-          <td class="main__table-btns">
-          <button class="inProgress-btn" data-id="${table._id}" style="${
-          table.isDone === `true` ? `background-color: #0d296a;` : ``
-        }" ${table.isDone === `true` ? `disabled` : ``} >In progress</button>
-          <button class="done-btn" data-id="${table._id}">Done</button>
-          </td>
-         </tr>
-          `;
+        <div class="main-user-card">
+        <h2 class="main-user-card-name">${card.name}</h2>
+        <h3 class="main-user-card-surname">${card.surname}</h3>
+        <h3 class="main-user-card-email">${card.email}</h3>
+        <h3 class="main-user-card-phone_number">${card.phone_number}</h3>
+        <p class="main-user-card-details">${
+          card.order_details ? card.order_details : ''
+        }</p>
+        
+
+        <button class="more-details-btn show-more-btn"  data-id="${
+          card._id
+        }">More details</button>
+        <div id="${card._id}"></div>
+        </div>
+        `;
       }
 
-      tableOutput.innerHTML = output;
+      adminInfoOutput.innerHTML = output;
+      const moreDetailsOutput = document.querySelectorAll(`.show-more-btn`);
+      console.log(moreDetailsOutput);
+      moreDetailsOutput.forEach((item) =>
+        item.addEventListener('click', getMoreDetails)
+      );
       selectAllBtn();
       console.log(ENDPOINT_ORDER_API);
     })
@@ -69,8 +51,8 @@ async function getTableInformation() {
 }
 
 const selectAllBtn = () => {
-  const allInProgressBtn = document.querySelectorAll(".inProgress-btn");
-  const allDoneBtn = document.querySelectorAll(".done-btn");
+  const allInProgressBtn = document.querySelectorAll('.inProgress-btn');
+  const allDoneBtn = document.querySelectorAll('.done-btn');
   allInProgressBtn.forEach((item) =>
     item.addEventListener(`click`, updateStatusOfAnOrder)
   );
@@ -84,16 +66,16 @@ const updateStatusOfAnOrder = (e) => {
   fetch(ENDPOINT_ORDER_API + e.target.dataset.id, {
     method: `PUT`,
     headers: {
-      "Content-type": `application/json`,
+      'Content-type': `application/json`,
     },
     body: JSON.stringify({ isDone: `true` }),
   }).then((res) => {
     console.log(res.status);
     if (res.status === 200) {
       Swal.fire(
-        "The request is successful!",
-        "Now reloading the page!",
-        "success"
+        'The request is successful!',
+        'Now reloading the page!',
+        'success'
       );
       setTimeout(() => {
         location.reload();
@@ -108,5 +90,53 @@ const sendOrderToCompletedTables = (e) => {
 const makeBtnActive = (e) => {};
 
 // events
-document.addEventListener("DOMContentLoaded", getTableInformation);
+document.addEventListener('DOMContentLoaded', getUserInformation);
 // ------------------------------------------------------------------------------------------------------
+
+const moreDetailsBtns = document.querySelectorAll('.more-details-btn');
+const moreDetailsOutput = document.querySelector('#more-details-output');
+
+const getMoreDetails = (e) => {
+  console.log(e.target.dataset.id);
+  return fetch(ENDPOINT_ORDER_API)
+    .then((response) => response.json())
+    .then((data) => {
+      let cards = data.reverse();
+
+      let output = '';
+      let element = ``;
+      for (let card of cards) {
+        if (e.target.dataset.id === card._id) {
+          output += `
+          <div>
+          <p>${card.table_shape ? card.table_shape : '-'}</p>
+          <p>${card.table_length ? card.table_length : '-'}</p>
+          <p>${card.table_width ? card.table_width : '-'}</p>
+          <p>${card.table_diameter ? card.table_diameter : '-'}</p>
+          <p>${card.table_height ? card.table_height : '-'}</p>
+          <p>${card.table_order_color ? card.table_order_color : '-'}</p>
+          <p>${
+            card.table_order_materials ? card.table_order_materials : '-'
+          }</p>
+          </div>
+        `;
+          element = card._id;
+        }
+        //
+        // const moreDetailsOutput = document.querySelector(`${card._id}`);
+        // console.log(moreDetailsOutput);
+        // moreDetailsOutput.addEventListener('click', getMoreDetails);
+      }
+      console.log(output);
+      console.log(element);
+      document.querySelector(`#${element}`).innerHTML = output;
+
+      selectAllBtn();
+      console.log(ENDPOINT_ORDER_API);
+    })
+    .catch((err) => console.log(err));
+};
+
+// moreDetailsBtns.forEach((item) =>
+//   item.addEventListener('click', getMoreDetails)
+// );
