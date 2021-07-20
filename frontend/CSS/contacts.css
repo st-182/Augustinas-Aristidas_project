@@ -7,7 +7,7 @@
 .fa-mobile {
   color: white;
 
-  margin-bottom: 30px;
+  margin-bottom: 21px;
 }
 
 .fa-mobile:hover {
@@ -41,6 +41,14 @@
   font-size: 30px;
 }
 
+.first-contact {
+  margin: 30px;
+}
+
+.second-contact {
+  margin-bottom: 20px;
+}
+
 .operations {
   margin: 10px;
   color: white;
@@ -48,15 +56,18 @@
 
 .operations-time {
   color: white;
+  margin-top: 10px;
 }
 
 .phone-number {
   color: white;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .find-us-text {
   color: white;
+  margin: 10px;
 }
 
 .find-store {
@@ -65,7 +76,7 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .find-store:hover {
@@ -221,8 +232,54 @@
   margin: 0 auto;
 }
 
+#find-output {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.find-store-output-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 10px;
+  background-color: rgb(46, 46, 46);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+}
+
+.find-store-output-div a {
+  color: white;
+  text-decoration: none;
+}
+
+.find-store-output-div a:hover {
+  color: orangered;
+}
+
 @media screen and (max-width: 546px) {
   #contact-icons {
     flex-direction: column;
+  }
+
+  .find-store-output-div {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 546px) {
+  .find-store-output-div {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .find-store-output-div {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
