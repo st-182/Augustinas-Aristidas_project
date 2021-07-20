@@ -263,6 +263,7 @@ const sendOrderToBackend = async (e) => {
       table_height: e.target[8].value,
       table_order_color: e.target[9].value,
       table_order_materials: e.target[10].value,
+      inProgress: false,
       isDone: false,
       user_name: true,
     };
@@ -291,6 +292,7 @@ const sendOrderToBackend = async (e) => {
       email: e.target[2].value,
       phone_number: e.target[3].value,
       order_details: e.target[4].value,
+      inProgress: false,
       isDone: false,
       user_name: true,
     };

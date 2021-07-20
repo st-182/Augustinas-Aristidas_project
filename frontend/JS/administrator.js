@@ -1,10 +1,10 @@
 //Import of Sweet Alert 2
 // import Swal from "sweetalert2";
 // API
-const ENDPOINT_ORDER_API = 'http://localhost:5000/api/orders/';
+const ENDPOINT_ORDER_API = "http://localhost:5000/api/orders/";
 
 // DOM variables
-const adminInfoOutput = document.querySelector('#admin-info-output');
+const adminInfoOutput = document.querySelector("#admin-info-output");
 
 // functions
 // admin ---------------------------------------------------------------------------------------------
@@ -15,44 +15,63 @@ async function getUserInformation() {
     .then((data) => {
       let cards = data.reverse();
 
-      let output = '';
+      let output = "";
 
       for (let card of cards) {
         output += `
         <div class="main-user-card">
-        <h2 class="main-user-card-name">${card.name}</h2>
-        <h3 class="main-user-card-surname">${card.surname}</h3>
-        <h3 class="main-user-card-email">${card.email}</h3>
-        <h3 class="main-user-card-phone_number">${card.phone_number}</h3>
-        <p class="main-user-card-details">${
-          card.order_details ? card.order_details : ''
-        }</p>
-        
+          <p class="type-of-order">${
+            card.order_details
+              ? `<i class="far fa-list-alt"></i>`
+              : card.table_shape === `Round`
+              ? `<i class="far fa-circle"></i>`
+              : `<i class="far fa-square"></i>`
+          }</p>
+          <p class="main-user-card-name">${card.name}</p>
+          <p class="main-user-card-surname">${card.surname}</p>
+          <p class="more-details-btn" ><i class="fas fa-chevron-down"></i></p>
 
-        <button class="more-details-btn show-more-btn"  data-id="${
-          card._id
-        }">More details</button>
-        <div id="${card._id}"></div>
+          <div class="none additional-info">
+            <p class="order-id">ID: ${card._id}</p>
+            <p class="order-id">User: ${
+              card.user ? card.user : `no account`
+            }</p>
+            <p class="main-user-card-date">Date: ${card.createdAt.slice(
+              0,
+              10
+            )}, Time: ${card.createdAt.slice(11, 19)}</p>
+            <p class="main-user-card-email">${card.email}</h>
+            <p class="main-user-card-phone_number">${card.phone_number}</p>
+            <p class="main-user-card-details">${
+              card.order_details ? card.order_details : ""
+            } </p>
+              <div>
+              <button class="inProgress-btn" data-id="${
+                card._id
+              }">In progress</button>
+              <button class="done-btn" data-id="${card._id}">Done</button>
+              </div>
+          </div>
+
         </div>
         `;
       }
 
       adminInfoOutput.innerHTML = output;
-      const moreDetailsOutput = document.querySelectorAll(`.show-more-btn`);
+      const moreDetailsOutput = document.querySelectorAll(`.main-user-card`);
       console.log(moreDetailsOutput);
       moreDetailsOutput.forEach((item) =>
-        item.addEventListener('click', getMoreDetails)
+        item.addEventListener("click", getMoreDetails, "capture")
       );
       selectAllBtn();
-      console.log(ENDPOINT_ORDER_API);
     })
     .catch((err) => console.log(err));
   // makeBtnActive();
 }
 
 const selectAllBtn = () => {
-  const allInProgressBtn = document.querySelectorAll('.inProgress-btn');
-  const allDoneBtn = document.querySelectorAll('.done-btn');
+  const allInProgressBtn = document.querySelectorAll(".inProgress-btn");
+  const allDoneBtn = document.querySelectorAll(".done-btn");
   allInProgressBtn.forEach((item) =>
     item.addEventListener(`click`, updateStatusOfAnOrder)
   );
@@ -66,16 +85,16 @@ const updateStatusOfAnOrder = (e) => {
   fetch(ENDPOINT_ORDER_API + e.target.dataset.id, {
     method: `PUT`,
     headers: {
-      'Content-type': `application/json`,
+      "Content-type": `application/json`,
     },
-    body: JSON.stringify({ isDone: `true` }),
+    body: JSON.stringify({ inProgress: `true` }),
   }).then((res) => {
     console.log(res.status);
     if (res.status === 200) {
       Swal.fire(
-        'The request is successful!',
-        'Now reloading the page!',
-        'success'
+        "The request is successful!",
+        "Now reloading the page!",
+        "success"
       );
       setTimeout(() => {
         location.reload();
@@ -88,55 +107,80 @@ const sendOrderToCompletedTables = (e) => {
 };
 
 const makeBtnActive = (e) => {};
-
-// events
-document.addEventListener('DOMContentLoaded', getUserInformation);
-// ------------------------------------------------------------------------------------------------------
-
-const moreDetailsBtns = document.querySelectorAll('.more-details-btn');
-const moreDetailsOutput = document.querySelector('#more-details-output');
-
 const getMoreDetails = (e) => {
-  console.log(e.target.dataset.id);
-  return fetch(ENDPOINT_ORDER_API)
-    .then((response) => response.json())
-    .then((data) => {
-      let cards = data.reverse();
+  console.log(e.currentTarget.lastElementChild);
+  // let offsetHeightBeforeToggle = e.currentTarget.lastElementChild.offsetHeight;
 
-      let output = '';
-      let element = ``;
-      for (let card of cards) {
-        if (e.target.dataset.id === card._id) {
-          output += `
-          <div>
-          <p>${card.table_shape ? card.table_shape : '-'}</p>
-          <p>${card.table_length ? card.table_length : '-'}</p>
-          <p>${card.table_width ? card.table_width : '-'}</p>
-          <p>${card.table_diameter ? card.table_diameter : '-'}</p>
-          <p>${card.table_height ? card.table_height : '-'}</p>
-          <p>${card.table_order_color ? card.table_order_color : '-'}</p>
-          <p>${
-            card.table_order_materials ? card.table_order_materials : '-'
-          }</p>
-          </div>
-        `;
-          element = card._id;
-        }
-        //
-        // const moreDetailsOutput = document.querySelector(`${card._id}`);
-        // console.log(moreDetailsOutput);
-        // moreDetailsOutput.addEventListener('click', getMoreDetails);
+  if (!e.currentTarget.lastElementChild.classList.contains("none")) {
+    // Closing keyframe
+    //selecting elements since it is not possible to pass them to setTimeout
+    let selectedElement = e.currentTarget;
+    let additionalInfo = e.currentTarget.lastElementChild;
+    setTimeout((e) => {
+      //toggling class none inn order to hide additional info
+      additionalInfo.classList.toggle(`none`);
+      //manipulating the marginBottom property of selected element, so the animation would finish properly
+      selectedElement.style.marginBottom = `${additionalInfo.offsetHeight}px`;
+    }, 500);
+    e.currentTarget.lastElementChild.style.top = `${e.currentTarget.offsetHeight}px`;
+    //animation of selected element
+    e.currentTarget.animate(
+      [
+        // keyframes
+        { marginBottom: `${e.currentTarget.lastElementChild.offsetHeight}px` },
+        { marginBottom: "0px" },
+      ],
+      {
+        // timing options
+        duration: 500,
+        iterations: 1,
       }
-      console.log(output);
-      console.log(element);
-      document.querySelector(`#${element}`).innerHTML = output;
+    );
+    //animation of additional information element
+    e.currentTarget.lastElementChild.animate(
+      [
+        // keyframes
+        { opacity: "1" },
+        { opacity: "0" },
+      ],
+      {
+        // timing options
+        duration: 500,
+        iterations: 1,
+      }
+    );
+  } else {
+    // Opening keyframe
 
-      selectAllBtn();
-      console.log(ENDPOINT_ORDER_API);
-    })
-    .catch((err) => console.log(err));
+    e.currentTarget.lastElementChild.classList.toggle(`none`);
+    e.currentTarget.lastElementChild.style.top = `${e.currentTarget.offsetHeight}px`;
+    e.currentTarget.style.marginBottom = `${e.currentTarget.lastElementChild.offsetHeight}px`;
+    e.currentTarget.animate(
+      [
+        // keyframes
+        { marginBottom: "0px" },
+        { marginBottom: `${e.currentTarget.lastElementChild.offsetHeight}px` },
+      ],
+      {
+        // timing options
+        duration: 500,
+        iterations: 1,
+      }
+    );
+    e.currentTarget.lastElementChild.animate(
+      [
+        // keyframes
+        { opacity: "0" },
+        { opacity: "1" },
+      ],
+      {
+        // timing options
+        duration: 500,
+        iterations: 1,
+      }
+    );
+  }
 };
 
-// moreDetailsBtns.forEach((item) =>
-//   item.addEventListener('click', getMoreDetails)
-// );
+// events
+document.addEventListener("DOMContentLoaded", getUserInformation);

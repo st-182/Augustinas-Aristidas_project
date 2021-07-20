@@ -85,6 +85,9 @@ input {
 .none-header {
   display: none;
 }
+.none {
+  display: none;
+}
 @media screen and (min-width: 768px) {
   .none-header {
     display: block;
