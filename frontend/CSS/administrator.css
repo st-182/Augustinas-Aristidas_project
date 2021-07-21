@@ -71,8 +71,10 @@
 }
 .square-table-img {
 }
+
 .round-table-img img,
-.square-table-img img {
+.square-table-img img,
+.visibility img {
   width: 100%;
   padding: 40px;
   padding-right: 100px;
@@ -88,14 +90,16 @@
   transform: translate(-85%);
 }
 
-.round-table-img > .main-user-card-table_height {
+.round-table-img > .main-user-card-table_height,
+.visibility > .main-user-card-table_height {
   position: absolute;
   top: 100px;
   left: 50%;
   transform: translate(-25%);
 }
 
-.square-table-img > .main-user-card-table_width {
+.square-table-img > .main-user-card-table_width,
+.visibility > .main-user-card-table_width {
   position: absolute;
   top: 50px;
   left: 50%;

@@ -1,5 +1,5 @@
 //Import of Sweet Alert 2
-// import Swal from "sweetalert2";
+import windowWidthChanged from "./administrator2.js";
 // API
 const ENDPOINT_ORDER_API = "http://localhost:5000/api/orders/";
 
@@ -51,7 +51,7 @@ async function getUserInformation() {
                 card.phone_number
               }</span></p>
               <p class="main-details-item main-user-card-table_shape">Table shape: <span>${
-                card.table_shape
+                card.table_shape ? card.table_shape : `Custom`
               }</span></p>
             </div>
 
@@ -79,7 +79,9 @@ async function getUserInformation() {
               <p class="main-user-card-table_height">${card.table_height}</p>
               </div>
             
-              <div class="additional-details">
+              <div class="additional-details ${
+                card.table_shape ? `` : `custom`
+              }">
                 <p class="additional-details-item main-user-card-table_order_color">${
                   card.table_order_color ? `Color:` : ``
                 }<span>${
@@ -129,9 +131,13 @@ async function getUserInformation() {
       adminInfoOutput.innerHTML = output;
       const moreDetailsOutput = document.querySelectorAll(`.main-user-card`);
       // console.log(moreDetailsOutput);
-      moreDetailsOutput.forEach((item) =>
-        item.addEventListener("click", getMoreDetails)
-      );
+      let theWindowSizeIsTableOrBigger = windowWidthChanged();
+      if (!theWindowSizeIsTableOrBigger) {
+        moreDetailsOutput.forEach((item) =>
+          item.addEventListener("click", getMoreDetails)
+        );
+      }
+
       selectAllBtn();
     })
     .catch((err) => console.log(err));
