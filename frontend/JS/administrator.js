@@ -222,15 +222,73 @@ const updateOrderButtonsLocally = (btn) => {
     .catch((err) => console.log(err));
 };
 
-const sendOrderToCompletedTables = (e) => {
+const sendOrderToCompletedTables = async (e) => {
   //!
   e.target.parentNode.parentNode.parentNode.removeEventListener(
     "click",
     getMoreDetails
   );
 
+  e.target.animate(
+    [{}, { color: `transparent`, transform: `scale(0.95)` }, {}],
+    { duration: 500 }
+  );
   console.log(e.target.parentNode.parentNode.parentNode);
-  Swal.fire("Good job!", "You clicked the button!", "success");
+
+  let urlAndTitle = [];
+  const { value: formValues } = await Swal.fire({
+    title: "Multiple inputs",
+    html:
+      '<input id="swal-input1" class="swal2-input">' +
+      '<input id="swal-input2" class="swal2-input">',
+    focusConfirm: false,
+    preConfirm: () => {
+      return urlAndTitle.push(
+        ...[
+          document.getElementById("swal-input1").value,
+          document.getElementById("swal-input2").value,
+        ]
+      );
+    },
+  });
+
+  if (urlAndTitle) {
+    // Swal.fire(`Is it correct?`, JSON.stringify(urlAndTitle), "question");
+    Swal.fire({
+      title: "Do you want to continue?",
+      showCancelButton: true,
+      confirmButtonText: `Yes`,
+      text: `Data to be sent: ${JSON.stringify(urlAndTitle)}`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        fetch(
+          ENDPOINT_ORDER_API + "order_to_portfolio/" + e.target.dataset.id,
+          {
+            method: `POST`,
+            headers: {
+              "Content-type": `application/json`,
+            },
+
+            body: JSON.stringify(urlAndTitle),
+          }
+        )
+          .then((newResponse) => {
+            console.log(newResponse.status);
+            if (newResponse.status === 200) {
+              Swal.fire("Sent!", "", "success");
+              getUserInformation();
+              console.log(newResponse);
+            } else {
+              Swal.fire("Error!", "", "error");
+            }
+            newResponse.json();
+          })
+          .catch((err) => console.log(err));
+        // Swal.fire("Sent!", "", "success");
+      }
+    });
+  }
 
   let theWindowSizeIsTableOrBigger = windowWidthChanged();
   if (!theWindowSizeIsTableOrBigger) {
@@ -239,8 +297,6 @@ const sendOrderToCompletedTables = (e) => {
       path.addEventListener("click", getMoreDetails);
     }, 100);
   }
-
-  // console.log(e.target.dataset.id);
 };
 
 const makeBtnActive = (e) => {};
@@ -319,7 +375,51 @@ const getMoreDetails = (e) => {
   }
 };
 
-const sendOrderToBackendForDeletion = (e) => {};
+const sendOrderToBackendForDeletion = (e) => {
+  //removes EventListener from order, so we can send data to server without animation
+  e.target.parentNode.parentNode.parentNode.removeEventListener(
+    "click",
+    getMoreDetails
+  );
+
+  e.target.animate(
+    [{}, { color: `transparent`, transform: `scale(0.95)` }, {}],
+    { duration: 500 }
+  );
+
+  Swal.fire({
+    title: "Do you really want to delete?",
+
+    showCancelButton: true,
+    confirmButtonText: `Delete`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire("Deleted!", "", "success");
+
+      fetch(ENDPOINT_ORDER_API + e.target.dataset.id, {
+        method: `DELETE`,
+        headers: {
+          "Content-type": `application/json`,
+        },
+      }).then((res) => {
+        console.log(res.status);
+        if (res.status === 200) {
+          getUserInformation();
+        }
+      });
+    }
+  });
+
+  //adds EventListener back, so you can close the card with animation
+  let theWindowSizeIsTableOrBigger = windowWidthChanged();
+  if (!theWindowSizeIsTableOrBigger) {
+    let path = e.target.parentNode.parentNode.parentNode;
+    setTimeout(() => {
+      path.addEventListener("click", getMoreDetails);
+    }, 100);
+  }
+};
 
 const fixMobileAndDesktopFunctionality = (e) => {
   let windowWidth = window.innerWidth;
