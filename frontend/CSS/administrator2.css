@@ -1,0 +1,52 @@
+@media screen and (min-width: 768px) {
+  #admin-info-output {
+    grid-template-columns: 1fr 1fr;
+  }
+  .none.additional-info {
+    display: block;
+  }
+  .main-user-card {
+    cursor: initial;
+  }
+  .additional-info {
+    position: initial;
+  }
+  .main-user-card {
+    height: auto;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: end;
+  }
+  .more-details-btn {
+    display: none;
+  }
+  .type-of-order,
+  .main-user-card-name,
+  .main-user-card-surname {
+    padding: 10px;
+  }
+  .square-table-img,
+  .round-table-img {
+    height: 200px;
+  }
+  .additional-details.custom > .additional-details-item.main-user-card-details {
+    height: 263px;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .additional-details.custom
+    > .additional-details-item.main-user-card-details::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #admin-info-output {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1680px) {
+  #admin-info-output {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

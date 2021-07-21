@@ -20,30 +20,18 @@ input {
   padding: 0 10px;
 }
 
-#main-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #mainVideo {
   opacity: 0.2;
   background-color: black;
 }
 
 .making-desk-video {
-  margin: 30px;
+  /* margin: 30px; */
 }
 
-#index-email {
-  height: 30px;
-  width: 300px;
-  border-radius: 10px;
-  border: none;
-  padding-left: 10px;
-}
-
-#index-password {
+#index-email,
+#index-password,
+#index-register {
   height: 30px;
   width: 300px;
   border-radius: 10px;
@@ -52,11 +40,7 @@ input {
 }
 
 #index-register {
-  height: 30px;
-  width: 300px;
-  border: none;
   cursor: pointer;
-  border-radius: 10px;
 }
 
 #index-register:hover {
@@ -64,33 +48,22 @@ input {
 }
 
 .main-page-form {
-  margin: 30px;
-  margin-top: 400px;
+  margin: 0 auto;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 
-#videos {
+#mainVideo {
+  top: 0;
   width: 100%;
+  height: 100vh;
   position: absolute;
-  top: 100px;
-}
-
-#main-page-footer {
-  margin-top: 450px;
-}
-
-@media screen and (max-width: 546px) {
-  #main-page {
-    flex-direction: column;
-  }
-
-  #videos {
-    top: 60px;
-  }
+  object-fit: cover;
+  z-index: -1;
 }
 
 .none-header {
@@ -99,6 +72,19 @@ input {
 .none {
   display: none;
 }
+.visibility {
+  visibility: hidden;
+}
+/* @media screen and (max-width: 546px) {
+  #main-page {
+    flex-direction: column;
+  }
+
+  #videos {
+    top: 30px;
+  }
+} */
+
 @media screen and (min-width: 768px) {
   .none-header {
     display: block;
