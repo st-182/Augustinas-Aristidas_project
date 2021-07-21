@@ -13,7 +13,7 @@ const toggleMenu = () => {
   } else {
     let headerHeight = document.querySelector(".heading").offsetHeight;
     menu.classList.remove("none-header");
-    console.log(headerHeight);
+    // console.log(headerHeight);
     menu.style.top = `${headerHeight}px`;
 
     showingMenu = true;

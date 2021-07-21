@@ -49,23 +49,42 @@ const showAllOrders = (req, res) => {
 
 const updateOrder = async (req, res) => {
   let id = req.params.id;
+  console.log(`started`);
   let data = req.body;
-  if (data.isDone === `true`) {
+  if (data.inProgress === `true`) {
     await Order_a_Constructed_Table.findById(id).then((response) => {
       if (response) {
         console.log(`found in Order_a_Constructed_Table`);
         Order_a_Constructed_Table.findByIdAndUpdate(id, {
-          isDone: true,
+          inProgress: true,
         }).then((message) => {
-          // Swal.fire(message);
           console.log(message);
         });
         res.json(response);
       } else {
         console.log(`found in Order_a_Custom_Table`);
-        Order_a_Custom_Table.findByIdAndUpdate(id, { isDone: true }).then(
+        Order_a_Custom_Table.findByIdAndUpdate(id, { inProgress: true }).then(
           (message) => {
-            // Swal.fire(message);
+            console.log(message);
+          }
+        );
+        res.json(response);
+      }
+    });
+  } else {
+    await Order_a_Constructed_Table.findById(id).then((response) => {
+      if (response) {
+        console.log(`found in Order_a_Constructed_Table`);
+        Order_a_Constructed_Table.findByIdAndUpdate(id, {
+          inProgress: false,
+        }).then((message) => {
+          console.log(message);
+        });
+        res.json(response);
+      } else {
+        console.log(`found in Order_a_Custom_Table`);
+        Order_a_Custom_Table.findByIdAndUpdate(id, { inProgress: false }).then(
+          (message) => {
             console.log(message);
           }
         );

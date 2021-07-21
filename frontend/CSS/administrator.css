@@ -1,3 +1,4 @@
+/* Settings for whole output area (area with order cards) */
 #admin-info-output {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,6 +7,7 @@
   margin: 0 auto;
 }
 
+/* Settings for an order card) */
 .main-user-card {
   background-color: hsl(0, 3%, 27%);
   display: flex;
@@ -17,6 +19,7 @@
   position: relative;
 }
 
+/* Settings for top card area in mobile view */
 .main-user-card-name,
 .main-user-card-surname {
   min-width: 25%;
@@ -30,6 +33,8 @@
   width: 10%;
   text-align: center;
 }
+
+/* Settings for p element, which shows down arrow */
 .more-details-btn {
   display: flex;
   align-items: center;
@@ -42,36 +47,121 @@
   text-decoration: none;
 }
 
+/* Settings for additional information area, which appear after `click` event */
 .additional-info {
   position: absolute;
   width: 100%;
   background: hsl(0, 3%, 23%);
 }
-.main__table-btns {
+
+/* Settings for  action buttons container */
+.action-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Some settings for table drawing*/
+.round-table-img,
+.square-table-img {
+  position: relative;
+}
+.round-table-img {
+}
+.square-table-img {
+}
+.round-table-img img,
+.square-table-img img {
   width: 100%;
-  padding: 42px;
+  padding: 40px;
+  padding-right: 100px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+/* Settings for table drawing text, which surrounds it */
+.main-user-card-table_diameter,
+.main-user-card-table_length {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-85%);
+}
+
+.round-table-img > .main-user-card-table_height {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-25%);
+}
+
+.square-table-img > .main-user-card-table_width {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(55%);
+}
+.square-table-img > .main-user-card-table_height {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translate(35%);
+}
+
+/* Settings for table drawing (centering, size fix, etc)*/
+.square-table-img img,
+.round-table-img img {
+  margin: 0 auto;
   text-align: center;
+  display: block;
+}
+.square-table-img img {
+  max-width: 324px;
+  max-height: 182px;
+}
+.round-table-img img {
+  max-width: 324px;
+  max-height: 243px;
 }
 
-.inProgress-btn {
-  width: 100px;
-  height: 20px;
-  border: none;
-  border-radius: 10px;
-  margin-bottom: 10px;
+/* Settings for buttons, other settings are in buttons.css*/
+.inProgress-btn,
+.done-btn,
+.delete-btn {
+  padding: 10px;
+}
+.delete-btn {
+  width: 100%;
+}
+.action-btn-delete {
+  padding: 10px;
 }
 
-.inProgress-btn:hover {
-  background-color: yellow;
+/* Settings for informational blocks in additional-information container(centering) */
+.main-details,
+.additional-details,
+.round-table-img,
+.square-table-img {
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+}
+/* Settings for informational blocks in additional-information container(separation) */
+.main-details,
+.additional-details {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
 }
 
-.done-btn {
-  width: 100px;
-  height: 20px;
-  border: none;
-  border-radius: 10px;
+/* Settings for text and actual information (separation)*/
+.main-details-item,
+.additional-details-item {
+  display: flex;
+  justify-content: space-between;
 }
 
-.done-btn:hover {
-  background-color: greenyellow;
+/* Setting for description, so it would be under the "Description:" text*/
+.additional-details-item:last-of-type {
+  flex-wrap: wrap;
 }

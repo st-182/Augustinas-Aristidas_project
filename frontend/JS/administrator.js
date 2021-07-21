@@ -32,25 +32,94 @@ async function getUserInformation() {
           <p class="more-details-btn" ><i class="fas fa-chevron-down"></i></p>
 
           <div class="none additional-info">
-            <p class="order-id">ID: ${card._id}</p>
-            <p class="order-id">User: ${
-              card.user ? card.user : `no account`
-            }</p>
-            <p class="main-user-card-date">Date: ${card.createdAt.slice(
-              0,
-              10
-            )}, Time: ${card.createdAt.slice(11, 19)}</p>
-            <p class="main-user-card-email">${card.email}</h>
-            <p class="main-user-card-phone_number">${card.phone_number}</p>
-            <p class="main-user-card-details">${
-              card.order_details ? card.order_details : ""
-            } </p>
-              <div>
-              <button class="inProgress-btn" data-id="${
+
+            <div class="main-details">
+              <p class="main-details-item main-user-card-id">ID: <span>${
                 card._id
-              }">In progress</button>
-              <button class="done-btn" data-id="${card._id}">Done</button>
+              }</span></p>
+              <p class="main-details-item main-user-card-account">User: <span>${
+                card.user ? card.user : `no account`
+              }</span></p>
+              <p class="main-details-item main-user-card-date">Date: <span>${card.createdAt.slice(
+                0,
+                10
+              )}, Time: ${card.createdAt.slice(11, 19)}</span></p>
+              <p class="main-details-item main-user-card-email">Email: <span>${
+                card.email
+              }</span></p>
+              <p class="main-details-item main-user-card-phone_number">Phone number: <span>${
+                card.phone_number
+              }</span></p>
+              <p class="main-details-item main-user-card-table_shape">Table shape: <span>${
+                card.table_shape
+              }</span></p>
+            </div>
+
+              <div class="${
+                card.order_details
+                  ? `none`
+                  : card.table_shape === `Round`
+                  ? `round-table-img`
+                  : `square-table-img`
+              }">
+              <img src="${
+                card.table_shape === `Round`
+                  ? `../IMAGES/round-table.png`
+                  : `../IMAGES/square-table.png`
+              }" alt="table">
+              <p class="main-user-card-table_length">${
+                card.table_length ? card.table_length : ``
+              }</p>
+              <p class="main-user-card-table_diameter">${
+                card.table_diameter ? card.table_diameter : ``
+              }</p>
+              <p class="main-user-card-table_width">${
+                card.table_width ? card.table_width : ``
+              }</p>
+              <p class="main-user-card-table_height">${card.table_height}</p>
               </div>
+            
+              <div class="additional-details">
+                <p class="additional-details-item main-user-card-table_order_color">${
+                  card.table_order_color ? `Color:` : ``
+                }<span>${
+          card.table_order_color ? card.table_order_color : ``
+        }</span></p>
+                <p class="additional-details-item main-user-card-table_order_material_type">${
+                  card.table_order_material_type ? `Material type:` : ``
+                }<span>${
+          card.table_order_material_type ? card.table_order_material_type : ``
+        }</span></p>
+                <p class="additional-details-item main-user-card-table_order_material">${
+                  card.table_order_material ? `Material:` : ``
+                }<span>${
+          card.table_order_material ? card.table_order_material : ``
+        }</span></p>
+                <p class="additional-details-item main-user-card-details">${
+                  card.order_details ? `Description: ` : ""
+                }<span>${
+          card.order_details ? card.order_details : ""
+        }</span></p>
+              </div>
+
+              <div class="action-btns">
+                <button class="inProgress-btn btn-style-rainbow" data-id="${
+                  card._id
+                }">${
+          card.inProgress === `true`
+            ? `Pause the order execution`
+            : `Start the order execution`
+        }</button>
+                <button class="done-btn btn-style-rainbow" data-id="${
+                  card._id
+                }">The order is done</button>
+              </div>
+              <div class="action-btn-delete">
+              <button class="delete-btn btn-style-rainbow" data-id="${
+                card._id
+              }">Reject and delete the order</button>
+              </div>
+
           </div>
 
         </div>
@@ -59,9 +128,9 @@ async function getUserInformation() {
 
       adminInfoOutput.innerHTML = output;
       const moreDetailsOutput = document.querySelectorAll(`.main-user-card`);
-      console.log(moreDetailsOutput);
+      // console.log(moreDetailsOutput);
       moreDetailsOutput.forEach((item) =>
-        item.addEventListener("click", getMoreDetails, "capture")
+        item.addEventListener("click", getMoreDetails)
       );
       selectAllBtn();
     })
@@ -81,34 +150,85 @@ const selectAllBtn = () => {
 };
 
 const updateStatusOfAnOrder = (e) => {
-  console.log(ENDPOINT_ORDER_API + e.target.dataset.id);
+  //removes EventListener from order, so we can send data to server without animation
+  e.target.parentNode.parentNode.parentNode.removeEventListener(
+    "click",
+    getMoreDetails
+  );
+  // changing inProgress status of order
+  console.log(e.target.textContent);
   fetch(ENDPOINT_ORDER_API + e.target.dataset.id, {
     method: `PUT`,
     headers: {
       "Content-type": `application/json`,
     },
-    body: JSON.stringify({ inProgress: `true` }),
+
+    body:
+      e.target.textContent === `Start the order execution`
+        ? JSON.stringify({ inProgress: `true` })
+        : JSON.stringify({ inProgress: `false` }),
   }).then((res) => {
     console.log(res.status);
     if (res.status === 200) {
-      Swal.fire(
-        "The request is successful!",
-        "Now reloading the page!",
-        "success"
+      // Swal.fire(
+      //   "The request is successful!",
+      //   "Now reloading the page!",
+      //   "success"
+      // );
+      // e.target.disabled = true;
+      // getUserInformation();
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 3000);
+      // console.log(e.target);
+      updateOrderButtonsLocally(e.target);
+      e.target.animate(
+        [{}, { color: `transparent`, transform: `scale(0.95)` }, {}],
+        { duration: 500 }
       );
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
     }
   });
+
+  //adds EventListner back, so you can close the card with animation
+  let path = e.target.parentNode.parentNode.parentNode;
+  setTimeout(() => {
+    path.addEventListener("click", getMoreDetails);
+  }, 100);
 };
+
+const updateOrderButtonsLocally = (btn) => {
+  fetch(ENDPOINT_ORDER_API)
+    .then((response) => response.json())
+    .then((data) => {
+      let order = data.filter((item) => item._id === btn.dataset.id);
+      console.log(order[0].inProgress);
+      order[0].inProgress === `false`
+        ? (btn.parentNode.firstElementChild.textContent = `Start the order execution`)
+        : (btn.parentNode.firstElementChild.textContent = `Pause the order execution`);
+    })
+    .catch((err) => console.log(err));
+};
+
 const sendOrderToCompletedTables = (e) => {
-  console.log(e.target.dataset.id);
+  e.target.parentNode.parentNode.parentNode.removeEventListener(
+    "click",
+    getMoreDetails
+  );
+
+  console.log(e.target.parentNode.parentNode.parentNode);
+  Swal.fire("Good job!", "You clicked the button!", "success");
+
+  let path = e.target.parentNode.parentNode.parentNode;
+  setTimeout(() => {
+    path.addEventListener("click", getMoreDetails);
+  }, 100);
+
+  // console.log(e.target.dataset.id);
 };
 
 const makeBtnActive = (e) => {};
 const getMoreDetails = (e) => {
-  console.log(e.currentTarget.lastElementChild);
+  // console.log(e.currentTarget.lastElementChild);
   // let offsetHeightBeforeToggle = e.currentTarget.lastElementChild.offsetHeight;
 
   if (!e.currentTarget.lastElementChild.classList.contains("none")) {
