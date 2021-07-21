@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 #output {
   display: grid;
@@ -14,20 +14,37 @@ img {
 
 .cards {
   position: relative;
+  transition: 500ms;
+}
+.cards:hover {
+  transform: scale(1.1);
+  transition: 500ms;
+
+  animation: rotateIt 1s 1 forwards;
+  transition: all 1000ms;
+}
+
+@keyframes rotateIt {
+  0% {
+    transform: translate(-5%, 5%);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
 }
 
 .display-none {
   position: absolute;
   top: 0;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   height: 100%;
   width: 100%;
   transition: 500ms;
 }
 
 .display-none:hover {
-  background-color: hsla(0, 0%, 0%, 0.5);
+  background-color: hsla(0, 0%, 0%, 0.7);
   transition: 500ms;
 }
 
