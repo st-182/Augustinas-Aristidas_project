@@ -11,6 +11,7 @@ import {
   putNewConstructedOrder,
   showAllOrders,
   updateOrder,
+  deleteOrder,
 } from "./controllers/pages.controller.js";
 
 const app = express();
@@ -44,4 +45,4 @@ app.post(`/api/orders/constructed`, putNewConstructedOrder);
 app.get(`/api/orders`, showAllOrders);
 app.put(`/api/orders/:id`, updateOrder);
 // app.push(`/`, getCompletedTables);
-// app.delete(`/`, getCompletedTables);
+app.delete(`/api/orders/:id`, deleteOrder);

@@ -49,7 +49,7 @@ const showAllOrders = (req, res) => {
 
 const updateOrder = async (req, res) => {
   let id = req.params.id;
-  console.log(`started`);
+  console.log(`update started`);
   let data = req.body;
   if (data.inProgress === `true`) {
     await Order_a_Constructed_Table.findById(id).then((response) => {
@@ -94,6 +94,29 @@ const updateOrder = async (req, res) => {
   }
 };
 
+const deleteOrder = async (req, res) => {
+  let id = req.params.id;
+  console.log(`delete started`);
+  let data = req.body;
+  if (true) {
+    await Order_a_Constructed_Table.findById(id).then((response) => {
+      if (response) {
+        console.log(`found in Order_a_Constructed_Table`);
+        Order_a_Constructed_Table.findByIdAndDelete(id).then((message) => {
+          console.log(message);
+        });
+        res.json(response);
+      } else {
+        console.log(`found in Order_a_Custom_Table`);
+        Order_a_Custom_Table.findByIdAndDelete(id).then((message) => {
+          console.log(message);
+        });
+        res.json(response);
+      }
+    });
+  }
+};
+
 export {
   getCompletedTables,
   getCompletedTablesById,
@@ -101,4 +124,5 @@ export {
   putNewConstructedOrder,
   showAllOrders,
   updateOrder,
+  deleteOrder,
 };

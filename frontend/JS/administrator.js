@@ -147,11 +147,15 @@ async function getUserInformation() {
 const selectAllBtn = () => {
   const allInProgressBtn = document.querySelectorAll(".inProgress-btn");
   const allDoneBtn = document.querySelectorAll(".done-btn");
+  const allDeleteBtn = document.querySelectorAll(".delete-btn");
   allInProgressBtn.forEach((item) =>
     item.addEventListener(`click`, updateStatusOfAnOrder)
   );
   allDoneBtn.forEach((item) =>
     item.addEventListener(`click`, sendOrderToCompletedTables)
+  );
+  allDeleteBtn.forEach((item) =>
+    item.addEventListener(`click`, sendOrderToBackendForDeletion)
   );
 };
 
@@ -195,11 +199,14 @@ const updateStatusOfAnOrder = (e) => {
     }
   });
 
-  //adds EventListner back, so you can close the card with animation
-  let path = e.target.parentNode.parentNode.parentNode;
-  setTimeout(() => {
-    path.addEventListener("click", getMoreDetails);
-  }, 100);
+  //adds EventListener back, so you can close the card with animation
+  let theWindowSizeIsTableOrBigger = windowWidthChanged();
+  if (!theWindowSizeIsTableOrBigger) {
+    let path = e.target.parentNode.parentNode.parentNode;
+    setTimeout(() => {
+      path.addEventListener("click", getMoreDetails);
+    }, 100);
+  }
 };
 
 const updateOrderButtonsLocally = (btn) => {
@@ -216,6 +223,7 @@ const updateOrderButtonsLocally = (btn) => {
 };
 
 const sendOrderToCompletedTables = (e) => {
+  //!
   e.target.parentNode.parentNode.parentNode.removeEventListener(
     "click",
     getMoreDetails
@@ -224,10 +232,13 @@ const sendOrderToCompletedTables = (e) => {
   console.log(e.target.parentNode.parentNode.parentNode);
   Swal.fire("Good job!", "You clicked the button!", "success");
 
-  let path = e.target.parentNode.parentNode.parentNode;
-  setTimeout(() => {
-    path.addEventListener("click", getMoreDetails);
-  }, 100);
+  let theWindowSizeIsTableOrBigger = windowWidthChanged();
+  if (!theWindowSizeIsTableOrBigger) {
+    let path = e.target.parentNode.parentNode.parentNode;
+    setTimeout(() => {
+      path.addEventListener("click", getMoreDetails);
+    }, 100);
+  }
 
   // console.log(e.target.dataset.id);
 };
@@ -308,5 +319,17 @@ const getMoreDetails = (e) => {
   }
 };
 
+const sendOrderToBackendForDeletion = (e) => {};
+
+const fixMobileAndDesktopFunctionality = (e) => {
+  let windowWidth = window.innerWidth;
+  if (windowWidth >= 768) {
+    getUserInformation();
+  } else {
+    getUserInformation();
+  }
+};
+
 // events
 document.addEventListener("DOMContentLoaded", getUserInformation);
+window.addEventListener("resize", fixMobileAndDesktopFunctionality);
