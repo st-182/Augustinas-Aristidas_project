@@ -167,7 +167,7 @@
 
 .spacetables-email {
   height: 40px;
-  width: 500px;
+  width: 90%;
   margin-bottom: 20px;
   border-radius: 10px;
   border: none;
@@ -176,7 +176,7 @@
 
 .question-textarea {
   height: 200px;
-  width: 500px;
+  width: 90%;
   margin-bottom: 20px;
   border-radius: 10px;
   border: none;
@@ -186,7 +186,7 @@
 
 .name-input {
   height: 40px;
-  width: 500px;
+  width: 90%;
   margin-bottom: 20px;
   border-radius: 10px;
   border: none;
@@ -195,7 +195,7 @@
 
 .number-input {
   height: 40px;
-  width: 500px;
+  width: 90%;
   margin-bottom: 20px;
   border-radius: 10px;
   border: none;
@@ -204,7 +204,7 @@
 
 .your-email-input {
   height: 40px;
-  width: 500px;
+  width: 90%;
   margin-bottom: 40px;
   border-radius: 10px;
   border: none;
@@ -281,5 +281,25 @@
 @media screen and (min-width: 1024px) {
   .find-store-output-div {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .spacetables-email {
+    width: 500px;
+  }
+
+  .question-textarea {
+    width: 500px;
+  }
+
+  .name-input {
+    width: 500px;
+  }
+
+  .number-input {
+    width: 500px;
+  }
+
+  .your-email-input {
+    width: 500px;
   }
 }
