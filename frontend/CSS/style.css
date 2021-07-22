@@ -31,7 +31,11 @@ input {
 
 #index-email,
 #index-password,
-#index-register {
+#index-register,
+#index-email-2,
+#index-password-2,
+#index-register-2,
+.input-style {
   height: 30px;
   width: calc(300px + 10vw);
   border-radius: 10px;
@@ -43,7 +47,8 @@ input {
   cursor: pointer;
 }
 
-#index-register:hover {
+#index-register:hover,
+#index-register-2:hover {
   background-color: orangered;
 }
 
@@ -105,12 +110,16 @@ input {
     width: calc(300px + 10vw);
     height: 50vh;
   }
-  form {
+  form #login,
+  form #register {
     height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5%;
+  }
+  form button {
+    padding: 3px 60px 3px;
   }
 }

@@ -19,10 +19,12 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/buttons.css" />
     <link rel="stylesheet" href="../CSS/navigation.css" />
     <link rel="stylesheet" href="../CSS/footer.css" />
     <script defer src="../JS/script.js"></script>
     <script defer src="../JS/footer.js"></script>
+    <script defer src="../JS/homepage.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Import the component for 3D model -->
     <script
@@ -66,17 +68,60 @@
       </section>
       <div class="homepage-flex">
         <section class="main-page-form">
-          <h2>Register</h2>
-          <form>
-            <input id="index-email" type="text" placeholder="Email" /><br />
-            <br />
+          <h2 id="form-name">Log in</h2>
+          <form id="login">
+            <input id="index-email" type="email" placeholder="Email" required />
+
             <input
               id="index-password"
               type="text"
               placeholder="Password"
-            /><br />
-            <br />
-            <input id="index-register" type="submit" value="Register" />
+              required
+            />
+
+            <input id="index-register" type="submit" value="Log in" />
+            <button class="btn-style-rainbow form-btn-register">
+              Register
+            </button>
+          </form>
+          <!-- FORM2 -->
+          <form id="register" class="none">
+            <input
+              class="input-style"
+              type="text"
+              placeholder="Name"
+              required
+            />
+            <input
+              class="input-style"
+              type="text"
+              placeholder="Surname"
+              required
+            />
+
+            <input
+              id="index-email-2"
+              type="email"
+              placeholder="Email"
+              required
+            />
+
+            <input
+              id="index-password-2"
+              type="text"
+              placeholder="Password"
+              required
+            />
+            <input
+              id="index-confirm-password-2"
+              class="input-style"
+              type="text"
+              placeholder="Confirm Password"
+              required
+            />
+
+            <input id="index-register-2" type="submit" value="Register" />
+            <button class="btn-style-rainbow form-btn-register">Log in</button>
           </form>
         </section>
         <section class="3dmodel">
