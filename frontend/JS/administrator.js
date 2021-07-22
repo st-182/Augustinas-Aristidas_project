@@ -239,7 +239,9 @@ const sendOrderToCompletedTables = async (e) => {
   const { value: formValues } = await Swal.fire({
     title: "Multiple inputs",
     html:
+      "<p>Table photo(URL link)</p>" +
       '<input id="swal-input1" class="swal2-input">' +
+      "<p>Table title</p>" +
       '<input id="swal-input2" class="swal2-input">',
     focusConfirm: false,
     preConfirm: () => {
@@ -269,7 +271,6 @@ const sendOrderToCompletedTables = async (e) => {
             headers: {
               "Content-type": `application/json`,
             },
-
             body: JSON.stringify(urlAndTitle),
           }
         )

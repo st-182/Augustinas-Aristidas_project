@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Festive&family=Indie+Flower&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -23,6 +24,11 @@
     <script defer src="../JS/script.js"></script>
     <script defer src="../JS/footer.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Import the component for 3D model -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
     <title>Home</title>
   </head>
   <body>
@@ -58,16 +64,33 @@
           </video>
         </div>
       </section>
-      <section class="main-page-form">
-        <h2>Register</h2>
-        <form>
-          <input id="index-email" type="text" placeholder="Email" /><br />
-          <br />
-          <input id="index-password" type="text" placeholder="Password" /><br />
-          <br />
-          <input id="index-register" type="submit" value="Register" />
-        </form>
-      </section>
+      <div class="homepage-flex">
+        <section class="main-page-form">
+          <h2>Register</h2>
+          <form>
+            <input id="index-email" type="text" placeholder="Email" /><br />
+            <br />
+            <input
+              id="index-password"
+              type="text"
+              placeholder="Password"
+            /><br />
+            <br />
+            <input id="index-register" type="submit" value="Register" />
+          </form>
+        </section>
+        <section class="3dmodel">
+          <h2>Sample table:</h2>
+          <model-viewer
+            src="../ASSETS/table.glb"
+            alt="VR Headset"
+            auto-rotate
+            camera-controls
+            ar
+            ios-src="../ASSETS/table.glb"
+          ></model-viewer>
+        </section>
+      </div>
     </main>
 
     <footer id="main-page-footer">
