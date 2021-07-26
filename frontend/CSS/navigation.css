@@ -107,6 +107,9 @@ body {
   top: 0;
   width: 100%;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 50px #000;
+  backdrop-filter: blur(15px);
 }
 
 @media screen and (min-width: 768px) {
@@ -124,6 +127,9 @@ body {
     display: block;
     position: initial;
     text-align: right;
+    background-color: initial;
+    box-shadow: initial;
+    backdrop-filter: initial;
   }
   .navbb nav {
     display: grid;

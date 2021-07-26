@@ -1,3 +1,5 @@
+// Login and register code
+
 //Variables
 const formElements = document.querySelectorAll(`form`);
 const formBtnRegisterOrLoginElements =

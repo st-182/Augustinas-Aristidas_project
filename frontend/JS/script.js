@@ -8,9 +8,14 @@ const footer = document.querySelector("#date");
 let showingMenu = false;
 const toggleMenu = () => {
   if (showingMenu) {
-    menu.classList.add("none-header");
-    showingMenu = false;
+    menu.animate([{ opacity: `1` }, { opacity: `0` }], { duration: 500 });
+    setTimeout(() => {
+      menu.classList.add("none-header");
+      showingMenu = false;
+    }, 500);
   } else {
+    menu.animate([{ opacity: `0` }, { opacity: `1` }], { duration: 500 });
+
     let headerHeight = document.querySelector(".heading").offsetHeight;
     menu.classList.remove("none-header");
     // console.log(headerHeight);
